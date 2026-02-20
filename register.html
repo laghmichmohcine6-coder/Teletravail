@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Télétravail</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/auth-premium.css">
+    <style>
+        .password-strength {
+            margin-top: 0.5rem;
+            height: 4px;
+            background: rgba(198, 166, 75, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .password-strength-text {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .strength-weak {
+            background: #ff4444;
+        }
+
+        .strength-fair {
+            background: #ff8800;
+        }
+
+        .strength-good {
+            background: #ffbb00;
+        }
+
+        .strength-strong {
+            background: #00cc66;
+        }
+
+        .strength-excellent {
+            background: #D4AF37;
+        }
+
+        .password-match {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .match-success {
+            color: #00cc66;
+        }
+
+        .match-error {
+            color: #ff4444;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-page page-transition">
+        <div class="particles" id="particles"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="auth-container">
+            <div class="auth-card">
+                <a href="index.html" class="auth-logo">
+                    <div class="auth-logo-icon">T</div>
+                    <span class="auth-logo-text">Télétravail</span>
+                </a>
+                <div class="auth-header">
+                    <h2 data-i18n="nav_join">Join Our Community</h2>
+                    <p data-i18n="how_it_works_subtitle">Start your remote work journey today</p>
+                </div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name *</label>
+                        <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password *</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" class="form-input"
+                                placeholder="Create a strong password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="strengthBar"></div>
+                        </div>
+                        <div class="password-strength-text" id="strengthText"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" class="form-input"
+                            placeholder="Re-enter your password" required>
+                        <div class="password-match" id="matchText"></div>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i> <span data-i18n="nav_join">Create Account</span>
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html" data-i18n="nav_login">Sign in</a></p>
+                    <p>Are you a company? <a href="company-register.html" data-i18n="nav_for_companies">Register as a
+                            company</a></p>
+                    <p><a href="index.html" data-i18n="nav_home">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage"></span></div>
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-content">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <div class="success-text">Welcome Aboard!</div>
+            <div class="success-subtext">Setting up your account...</div>
+        </div>
+    </div>
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/auth-premium.js"></script>
+    <script>
+        Guards.redirectIfAuthenticated();
+
+        // Password strength
+        document.getElementById('password').addEventListener('input', function () {
+            const password = this.value;
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            let strength = 0;
+            let label = '';
+            let className = '';
+
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+            if (password.match(/\d/)) strength++;
+            if (password.match(/[^a-zA-Z\d]/)) strength++;
+            if (password.length >= 12) strength++;
+
+            const widths = ['0%', '20%', '40%', '60%', '80%', '100%'];
+            const labels = ['', 'Weak', 'Fair', 'Good', 'Strong', 'Excellent'];
+            const classes = ['', 'strength-weak', 'strength-fair', 'strength-good', 'strength-strong', 'strength-excellent'];
+
+            strengthBar.style.width = widths[strength];
+            strengthBar.className = 'password-strength-bar ' + classes[strength];
+            strengthText.textContent = labels[strength];
+            strengthText.className = 'password-strength-text ' + classes[strength];
+        });
+
+        // Password match
+        document.getElementById('confirmPassword').addEventListener('input', function () {
+            const password = document.getElementById('password').value;
+            const confirm = this.value;
+            const matchText = document.getElementById('matchText');
+
+            if (confirm.length > 0) {
+                if (password === confirm) {
+                    matchText.textContent = '✓ Passwords match';
+                    matchText.className = 'password-match match-success';
+                } else {
+                    matchText.textContent = '✗ Passwords do not match';
+                    matchText.className = 'password-match match-error';
+                }
+            } else {
+                matchText.textContent = '';
+            }
+        });
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match');
+                return;
+            }
+
+            const userData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: password
+            };
+
+            const result = Auth.registerUser(userData);
+            if (result.success) {
+                document.getElementById('successOverlay').classList.add('show');
+                setTimeout(() => {
+                    Auth.loginUser(userData.email, userData.password);
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } else {
+                showToast(result.message);
+            }
+        });
+    </script>
+    <script src="assets/js/page-transition-manager.js"></script>
+</body>
+
+</html>

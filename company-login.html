@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Login - Télétravail</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/auth-premium.css">
+</head>
+
+<body>
+    <div class="auth-page">
+        <div class="particles" id="particles"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="auth-container">
+            <div class="auth-card">
+                <a href="index.html" class="auth-logo">
+                    <div class="auth-logo-icon">T</div>
+                    <span class="auth-logo-text">Télétravail</span>
+                </a>
+                <div class="auth-header">
+                    <div class="company-badge"><i class="fas fa-building"></i> <span data-i18n="company_portal">Company
+                            Portal</span></div>
+                    <h2 data-i18n="access_hiring_hub">Access Your Hiring Hub</h2>
+                    <p data-i18n="manage_jobs_subtitle">Manage jobs and connect with top talent</p>
+                </div>
+                <form id="companyLoginForm">
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-i18n="form_company_email">Company Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="company@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label" data-i18n="form_password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" class="form-input" placeholder="Enter password"
+                                required>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe" data-i18n="remember_me">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-sign-in-alt"></i> <span data-i18n="btn_access_dashboard">Access
+                            Dashboard</span>
+                    </button>
+                </form>
+                <div class="demo-box">
+                    <div class="demo-title"><i class="fas fa-key"></i> <span data-i18n="demo_credentials">Demo
+                            Credentials</span></div>
+                    <div class="demo-item" onclick="copyToClipboard('mohcine@gmail.com', 'Email')">
+                        <div>
+                            <div class="demo-label" data-i18n="email">Email</div>
+                            <div class="demo-value">mohcine@gmail.com</div>
+                        </div>
+                        <i class="fas fa-copy copy-icon"></i>
+                    </div>
+                    <div class="demo-item" onclick="copyToClipboard('Mohcine123!', 'Password')">
+                        <div>
+                            <div class="demo-label" data-i18n="password">Password</div>
+                            <div class="demo-value">Mohcine123!</div>
+                        </div>
+                        <i class="fas fa-copy copy-icon"></i>
+                    </div>
+                </div>
+                <div class="auth-footer">
+                    <p><span data-i18n="no_account">Don't have an account?</span> <a href="company-register.html"
+                            data-i18n="register_company">Register your company</a></p>
+                    <p><span data-i18n="looking_for_job">Looking for a job?</span> <a href="login.html"
+                            data-i18n="user_login">User Login</a></p>
+                    <p><a href="index.html" data-i18n="nav_home">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage"></span></div>
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-content">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <div class="success-text">Welcome Back!</div>
+            <div class="success-subtext">Redirecting to your dashboard...</div>
+        </div>
+    </div>
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/auth-premium.js"></script>
+    <script>
+        Guards.redirectIfAuthenticated();
+        document.getElementById('companyLoginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const result = Auth.loginCompany(document.getElementById('email').value, document.getElementById('password').value);
+            if (result.success) {
+                document.getElementById('successOverlay').classList.add('show');
+                setTimeout(() => window.location.href = 'company-dashboard.html', 1500);
+            } else {
+                showToast(result.message);
+            }
+        });
+    </script>
+</body>
+
+</html>

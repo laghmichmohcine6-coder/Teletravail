@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Télétravail - Premium remote work platform connecting professionals with global opportunities">
+    <title>Télétravail - Work Without Borders</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="page-transition">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <div class="logo-icon">T</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <span>Télétravail</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active" data-i18n="nav_home">Home</a></li>
+                <li><a href="jobs.html" class="nav-link" data-i18n="nav_jobs">Jobs</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="company-register.html" class="nav-link" data-i18n="nav_for_companies">For Companies</a>
+                </li>
+                <li>
+                    <div class="language-selector" style="display: flex; gap: 5px; margin: 0 10px;">
+                        <button class="lang-btn active" data-lang="en"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">EN</button>
+                        <button class="lang-btn" data-lang="fr"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">FR</button>
+                    </div>
+                </li>
+                <li><a href="login.html" class="btn btn-ghost" data-i18n="nav_login">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary" data-i18n="nav_join">Join Now</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section"
+        style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(rgba(11, 11, 11, 0.65), rgba(11, 11, 11, 0.45)), url('assets/images/hero/20.png') center/cover no-repeat fixed;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h1 class="hero-title">
+                    <span data-i18n="hero_title">Work Without</span> <span class="gold-text"
+                        data-i18n="hero_title_highlight">Borders</span>
+                </h1>
+                <p class="hero-subtitle"
+                    style="font-size: 1.25rem; color: var(--muted-text); margin: var(--spacing-lg) 0;"
+                    data-i18n="hero_subtitle">
+                    Connect with world-class remote opportunities. Build your career from anywhere. Join the future of
+                    work.
+                </p>
+                <div class="hero-buttons"
+                    style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="jobs.html" class="btn btn-primary btn-ripple"
+                        style="padding: 1rem 2.5rem; font-size: 1.125rem;">
+                        <i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i>
+                        <span data-i18n="hero_find_jobs">Find Remote Jobs</span>
+                    </a>
+                    <a href="company-post-job.html" class="btn btn-secondary btn-ripple"
+                        style="padding: 1rem 2.5rem; font-size: 1.125rem;">
+                        <i class="fas fa-plus-circle" style="margin-right: 0.5rem;"></i>
+                        <span data-i18n="hero_post_job">Post a Job</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Gradient -->
+        <div
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%); z-index: 1;">
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><span data-i18n="how_it_works_title">How It</span> <span class="gold-text"
+                        data-i18n="how_it_works_highlight">Works</span></h2>
+                <p class="section-subtitle" data-i18n="how_it_works_subtitle">Three simple steps to your dream remote
+                    career</p>
+            </div>
+
+            <div class="grid grid-3" style="margin-top: var(--spacing-xl);">
+                <div class="card hover-glow reveal" style="text-align: center; background: #000000;">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto var(--spacing-md); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/icons/icon_user_luxury_gold_1771167907638.png" alt="Create Profile"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);" data-i18n="step1_title">
+                        Create Your Profile</h3>
+                    <p style="color: var(--muted-text);" data-i18n="step1_desc">Build a professional profile showcasing
+                        your skills,
+                        experience, and remote work preferences.</p>
+                </div>
+
+                <div class="card hover-glow reveal" style="text-align: center; background: #000000;">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto var(--spacing-md); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/icons/icon_globe_luxury_gold_1771167859104.png"
+                            alt="Discover Opportunities" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);" data-i18n="step2_title">
+                        Discover Opportunities</h3>
+                    <p style="color: var(--muted-text);" data-i18n="step2_desc">Browse thousands of remote positions
+                        from top companies
+                        worldwide, tailored to your expertise.</p>
+                </div>
+
+                <div class="card hover-glow reveal" style="text-align: center; background: #000000;">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto var(--spacing-md); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/icons/icon_laptop_luxury_gold_1771167805637.png"
+                            alt="Work From Anywhere" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);" data-i18n="step3_title">Work
+                        From Anywhere</h3>
+                    <p style="color: var(--muted-text);" data-i18n="step3_desc">Start your remote journey and enjoy the
+                        freedom to work from
+                        any location in the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="reveal" style="text-align: center;">
+                    <div class="stat-number" data-target="850">0</div>
+                    <p style="color: var(--muted-text); font-size: 1.125rem; margin-top: var(--spacing-sm);">Remote
+                        Positions</p>
+                </div>
+                <div class="reveal" style="text-align: center;">
+                    <div class="stat-number" data-target="320">0</div>
+                    <p style="color: var(--muted-text); font-size: 1.125rem; margin-top: var(--spacing-sm);">Global
+                        Companies</p>
+                </div>
+                <div class="reveal" style="text-align: center;">
+                    <div class="stat-number" data-target="4200">0</div>
+                    <p style="color: var(--muted-text); font-size: 1.125rem; margin-top: var(--spacing-sm);">Active
+                        Professionals</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- For Companies Section -->
+    <section class="for-companies-section"
+        style="padding: var(--spacing-xxl) var(--spacing-xl); background: var(--secondary-dark);">
+        <div class="container">
+            <div class="section-title">
+                <h2><span data-i18n="nav_for_companies">For Companies</span></h2>
+                <p class="section-subtitle">Find and hire top remote talent from around the world</p>
+            </div>
+
+            <div class="grid grid-3" style="margin-top: var(--spacing-xl);">
+                <div class="card hover-glow reveal" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto var(--spacing-md); background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; color: var(--primary-bg);"></i>
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);">Access Top Talent</h3>
+                    <p style="color: var(--muted-text);">Connect with skilled professionals from around the globe ready
+                        to work remotely.</p>
+                </div>
+
+                <div class="card hover-glow reveal" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto var(--spacing-md); background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-rocket" style="font-size: 2rem; color: var(--primary-bg);"></i>
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);">Quick Hiring</h3>
+                    <p style="color: var(--muted-text);">Post jobs in minutes and start receiving applications from
+                        qualified candidates.</p>
+                </div>
+
+                <div class="card hover-glow reveal" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto var(--spacing-md); background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary-bg);"></i>
+                    </div>
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-sm);">Grow Your Team</h3>
+                    <p style="color: var(--muted-text);">Build a world-class remote team without geographical
+                        limitations.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--spacing-xl);">
+                <a href="company-register.html" class="btn btn-primary"
+                    style="padding: 1rem 2.5rem; font-size: 1.125rem;">
+                    <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                    <span data-i18n="hero_post_job">Hire Talent</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section"
+        style="padding: var(--spacing-xxl) var(--spacing-xl); background: var(--primary-bg); position: relative; overflow: hidden;">
+        <!-- Background Element -->
+        <div
+            style="position: absolute; top: 0; right: 0; width: 600px; height: 600px; background: radial-gradient(circle, rgba(198, 166, 75, 0.05) 0%, transparent 70%); pointer-events: none;">
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2><span data-i18n="team_title">Meet the</span> <span class="gold-text"
+                        data-i18n="team_highlight">Team</span></h2>
+                <p class="section-subtitle" data-i18n="team_subtitle">The visionaries and experts behind the future of
+                    remote work</p>
+            </div>
+
+            <div class="team-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-xl);">
+
+                <!-- Founder Card -->
+                <div class="team-card hover-lift reveal"
+                    style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden;">
+                    <div class="team-image-container" style="height: 300px; position: relative; overflow: hidden;">
+                        <img src="assets/images/team/14.jpeg" alt="Alexandre Dubois - Founder & CEO"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="team-content" style="padding: var(--spacing-md); text-align: center;">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Alexandre Dubois</h3>
+                        <p style="color: var(--gold-accent); font-size: 0.875rem; font-weight: 500;"
+                            data-i18n="role_founder">Founder & CEO</p>
+                    </div>
+                </div>
+
+
+                <!-- Executive Card -->
+                <div class="team-card hover-lift reveal"
+                    style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition-delay: 0.2s;">
+                    <div class="team-image-container" style="height: 300px; position: relative; overflow: hidden;">
+                        <img src="assets/images/team/11.jpeg" alt="Sophie Laurent - Chief Operations Officer"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="team-content" style="padding: var(--spacing-md); text-align: center;">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Sophie Laurent</h3>
+                        <p style="color: var(--gold-accent); font-size: 0.875rem; font-weight: 500;"
+                            data-i18n="role_coo">Chief Operations
+                            Officer</p>
+                    </div>
+                </div>
+
+                <!-- Team Collaboration Card -->
+                <div class="team-card hover-lift reveal"
+                    style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition-delay: 0.1s;">
+                    <div class="team-image-container" style="height: 300px; position: relative; overflow: hidden;">
+                        <img src="assets/images/team/10.jpeg" alt="Global Strategy Team"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="team-content" style="padding: var(--spacing-md); text-align: center;">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;" data-i18n="role_strategy">Global
+                            Strategy Team</h3>
+                        <p style="color: var(--gold-accent); font-size: 0.875rem; font-weight: 500;"
+                            data-i18n="role_connecting">Connecting
+                            Continents</p>
+                    </div>
+                </div>
+                <!-- Remote Discussion Card -->
+                <div class="team-card hover-lift reveal"
+                    style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition-delay: 0.3s;">
+                    <div class="team-image-container" style="height: 300px; position: relative; overflow: hidden;">
+                        <img src="assets/images/Video Meeting/24.png" alt="Remote Innovation Team"
+                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="team-content" style="padding: var(--spacing-md); text-align: center;">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;" data-i18n="role_remote">Remote
+                            Innovation</h3>
+                        <p style="color: var(--gold-accent); font-size: 0.875rem; font-weight: 500;"
+                            data-i18n="role_future">Building the Future
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: var(--spacing-md);">
+                        <div class="logo-icon">T</div>
+                        <span>Télétravail</span>
+                    </div>
+                    <p style="color: var(--muted-text);" data-i18n="footer_tagline">Connecting professionals with
+                        world-class remote opportunities.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_quick_links">Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html" data-i18n="nav_jobs">Browse Jobs</a></li>
+                        <li><a href="register.html" data-i18n="nav_join">Create Account</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_for_companies">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+                        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_resources">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Télétravail. <span data-i18n="footer_rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/roles.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/shared/ui.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/data/jobs.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/animations-premium.js"></script>
+    <script src="assets/js/page-transition-manager.js"></script>
+</body>
+
+</html>

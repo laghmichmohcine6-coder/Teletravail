@@ -1,0 +1,146 @@
+/*
+ * Télétravail – Premium Page Transition System
+ * Concept: Fade + subtle upward slide with cubic-bezier easing
+ * Duration: 420ms entrance / 300ms exit — fast enough to feel snappy
+ * Accessibility: fully disabled when prefers-reduced-motion is set
+ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+    --pt-duration-out: 300ms;
+    --pt-duration-in: 420ms;
+    --pt-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --pt-slide: 18px;
+    --pt-overlay-color: #0a0a0a;
+}
+
+/* ── Smooth scroll (disabled during transition) ────────────── */
+html {
+    scroll-behavior: smooth;
+}
+
+html.pt-active {
+    scroll-behavior: auto;
+}
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+/*
+ * Every page body gets a thin invisible overlay strip that slides
+ * across on navigation – achieved via ::before pseudo-element.
+ * No extra DOM needed.
+ */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--pt-overlay-color);
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--pt-duration-out) var(--pt-ease);
+}
+
+/* Active = overlay becomes opaque (exit) */
+body.pt-exit::before {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ── Page content wrapper ──────────────────────────────────── */
+/*
+ * .page-transition is placed on the dashboard-wrapper (or <main>
+ * on public pages). It fades + slides up on load.
+ */
+.page-transition {
+    opacity: 0;
+    transform: translateY(var(--pt-slide));
+    transition:
+        opacity var(--pt-duration-in) var(--pt-ease),
+        transform var(--pt-duration-in) var(--pt-ease);
+}
+
+.page-transition.pt-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Gold progress bar ─────────────────────────────────────── */
+/* Thin line at the very top that runs left→right during navigation */
+#pt-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, #c6a64b, #f5d78e, #c6a64b);
+    background-size: 200% 100%;
+    z-index: 100000;
+    opacity: 0;
+    transition: opacity 150ms ease;
+    animation: ptProgressShimmer 1.2s linear infinite;
+}
+
+#pt-progress.pt-running {
+    opacity: 1;
+    animation:
+        ptProgressShimmer 1.2s linear infinite,
+        ptProgressGrow 600ms var(--pt-ease) forwards;
+}
+
+@keyframes ptProgressGrow {
+    0% {
+        width: 0%;
+    }
+
+    60% {
+        width: 75%;
+    }
+
+    100% {
+        width: 95%;
+    }
+}
+
+@keyframes ptProgressShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: 0% 0;
+    }
+}
+
+/* ── Legacy class names (kept for HTML backwards compatibility, no styles needed) ── */
+/* .luxury-page-loader, .page-exit, .page-enter, .page-transitioning-in, .page-ready, .page-transition-complete */
+.luxury-page-loader {
+    display: none !important;
+}
+
+/* ── Accessibility ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --pt-duration-out: 0ms;
+        --pt-duration-in: 0ms;
+    }
+
+    body::before,
+    .page-transition,
+    #pt-progress {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ── GPU hint ──────────────────────────────────────────────── */
+body::before,
+.page-transition,
+#pt-progress {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+/* Remove hint after animation */
+.pt-visible {
+    will-change: auto;
+}

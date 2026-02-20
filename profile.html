@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Profile - Télétravail">
+    <title>Profile - Télétravail</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .profile-header {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--gold-accent);
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .form-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <div class="logo-icon">T</div>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper page-transition">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">T</div>
+                <span class="sidebar-logo-text">Télétravail</span>
+            </div>
+
+            <nav>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item">
+                        <a href="dashboard.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-th-large"></i></span>
+                            <span data-i18n="nav_overview">Overview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="dashboard-applications.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-file-alt"></i></span>
+                            <span data-i18n="nav_applications">My Applications</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="profile.html" class="sidebar-menu-link active">
+                            <span class="sidebar-menu-icon"><i class="fas fa-user"></i></span>
+                            <span data-i18n="nav_profile">Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" onclick="Auth.logout()">
+                            <span class="sidebar-menu-icon"><i class="fas fa-sign-out-alt"></i></span>
+                            <span data-i18n="nav_logout">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-user">
+                <img src="https://ui-avatars.com/api/?name=User&background=D4AF37&color=0B0B0B&size=128"
+                    alt="User Avatar" class="sidebar-user-avatar" id="sidebarAvatar">
+                <div class="sidebar-user-info">
+                    <h4 id="sidebarName">User</h4>
+                    <p id="sidebarEmail">user@example.com</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <div class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="topbar-welcome">
+                        <h2 data-i18n="profile_settings">Profile Settings</h2>
+                        <p data-i18n="profile_subtitle">Manage your personal information and preferences</p>
+                    </div>
+                </div>
+                <!-- Language Selector -->
+                <div class="language-selector" style="display: flex; gap: 5px;">
+                    <button class="lang-btn active" data-lang="en"
+                        style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">EN</button>
+                    <button class="lang-btn" data-lang="fr"
+                        style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">FR</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Profile Header -->
+                <div class="profile-header reveal">
+                    <img src="https://ui-avatars.com/api/?name=User&background=D4AF37&color=0B0B0B&size=256"
+                        alt="Profile Avatar" class="profile-avatar" id="profileAvatar">
+                    <h2 style="color: var(--text-light); margin-bottom: 0.5rem;" id="profileName">User Name</h2>
+                    <p style="color: var(--muted-text); margin-bottom: var(--spacing-md);" id="profileEmail">
+                        user@example.com</p>
+                    <button class="btn btn-ghost">
+                        <i class="fas fa-camera" style="margin-right: 0.5rem;"></i>
+                        <span data-i18n="change_photo">Change Photo</span>
+                    </button>
+                </div>
+
+                <!-- Profile Form -->
+                <form id="profileForm">
+                    <!-- Personal Information -->
+                    <div class="form-section reveal">
+                        <h3 style="color: var(--text-light); margin-bottom: var(--spacing-lg);"
+                            data-i18n="personal_info">Personal Information
+                        </h3>
+
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_name">Full Name</label>
+                                <input type="text" class="form-input" id="inputName" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_email">Email Address</label>
+                                <input type="email" class="form-input" id="inputEmail" name="email" required disabled
+                                    style="opacity: 0.7; cursor: not-allowed;">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_phone">Phone Number</label>
+                                <input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_location">Location</label>
+                                <input type="text" class="form-input" name="location" placeholder="City, Country">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Information -->
+                    <div class="form-section reveal">
+                        <h3 style="color: var(--text-light); margin-bottom: var(--spacing-lg);" data-i18n="prof_info">
+                            Professional Information
+                        </h3>
+
+                        <div style="display: grid; gap: var(--spacing-md);">
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_job_title">Job Title</label>
+                                <input type="text" class="form-input" name="jobTitle"
+                                    placeholder="e.g., Senior Frontend Developer">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_remote_pref">Remote Work Preference</label>
+                                <select class="form-input" name="remotePreference">
+                                    <option value="">Select preference</option>
+                                    <option value="full-remote">Full Remote Only</option>
+                                    <option value="hybrid">Hybrid</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_skills">Skills (comma separated)</label>
+                                <input type="text" class="form-input" name="skills"
+                                    placeholder="React, TypeScript, Node.js">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="form_about">About Me</label>
+                                <textarea class="form-input" name="about" rows="5"
+                                    placeholder="Tell us about yourself and your experience..."
+                                    style="resize: vertical;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div style="display: flex; gap: var(--spacing-md); justify-content: flex-end;">
+                        <button type="button" class="btn btn-ghost" data-i18n="btn_cancel">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save" style="margin-right: 0.5rem;"></i>
+                            <span data-i18n="btn_save_changes">Save Changes</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/roles.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/shared/ui.js"></script>
+    <script src="assets/js/user/user-dashboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/animations-premium.js"></script>
+    <script src="assets/js/page-transition-manager.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Guards.redirectIfUnauthenticated();
+
+            const user = Auth.getCurrentUser();
+            if (user) {
+                // Update Sidebar & Header
+                const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=D4AF37&color=0B0B0B`;
+
+                document.getElementById('sidebarName').textContent = user.name;
+                document.getElementById('sidebarEmail').textContent = user.email;
+                document.getElementById('sidebarAvatar').src = avatarUrl;
+
+                document.getElementById('profileName').textContent = user.name;
+                document.getElementById('profileEmail').textContent = user.email;
+                document.getElementById('profileAvatar').src = avatarUrl; // Larger size handled by API? No, UI-Avatars handles size via param but simple URL is fine, key is name. 
+                document.getElementById('profileAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=D4AF37&color=0B0B0B&size=256`;
+
+                // Pre-fill form
+                document.getElementById('inputName').value = user.name;
+                document.getElementById('inputEmail').value = user.email;
+            }
+
+            // Language Selector Logic (Simple)
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const lang = e.target.getAttribute('data-lang');
+                    if (window.i18n) {
+                        window.i18n.setLanguage(lang);
+                        langButtons.forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

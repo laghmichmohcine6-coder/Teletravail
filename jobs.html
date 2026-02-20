@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover world-class remote job opportunities - Télétravail Elite Jobs">
+    <title>Elite Remote Jobs - Télétravail</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/jobs-premium.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP for elite animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <div class="logo-icon">T</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <span>Télétravail</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li><a href="jobs.html" class="nav-link active" data-i18n="nav_jobs">Jobs</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="company-register.html" class="nav-link" data-i18n="nav_for_companies">For Companies</a>
+                </li>
+                <li>
+                    <div class="language-selector" style="display: flex; gap: 5px; margin: 0 10px;">
+                        <button class="lang-btn active" data-lang="en"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">EN</button>
+                        <button class="lang-btn" data-lang="fr"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">FR</button>
+                    </div>
+                </li>
+                <li><a href="login.html" class="btn btn-ghost" data-i18n="nav_login">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary" data-i18n="nav_join">Join Now</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Logo Animation -->
+    <section class="jobs-hero">
+        <!-- Golden crack effects -->
+        <div class="golden-crack"></div>
+        <div class="golden-crack"></div>
+        <div class="golden-crack"></div>
+
+        <div class="hero-content">
+            <div class="hero-logo">
+                <span>T</span>
+            </div>
+            <h1 class="hero-title" data-i18n="jobs_hero_title">Elite Remote Opportunities</h1>
+            <p class="hero-subtitle" data-i18n="jobs_hero_subtitle">
+                Discover world-class positions from top companies. Your dream remote career starts here.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <div class="container">
+                <!-- Filters - Glass Morphism -->
+                <div class="jobs-filters">
+                    <div class="filter-group">
+                        <select class="filter-select" id="categoryFilter" aria-label="Filter by category">
+                            <option value="" data-i18n="jobs_filter_all_cats">All Categories</option>
+                            <option value="development" data-i18n="filter_cat_development">Development</option>
+                            <option value="design" data-i18n="filter_cat_design">Design</option>
+                            <option value="marketing" data-i18n="filter_cat_marketing">Marketing</option>
+                            <option value="management" data-i18n="filter_cat_management">Management</option>
+                            <option value="sales" data-i18n="filter_cat_sales">Sales</option>
+                            <option value="support" data-i18n="filter_cat_support">Support</option>
+                        </select>
+
+                        <select class="filter-select" id="typeFilter" aria-label="Filter by job type">
+                            <option value="" data-i18n="jobs_filter_all_types">All Types</option>
+                            <option value="Full-time" data-i18n="filter_type_fulltime">Full-time</option>
+                            <option value="Part-time" data-i18n="filter_type_parttime">Part-time</option>
+                            <option value="Contract" data-i18n="filter_type_contract">Contract</option>
+                            <option value="Freelance" data-i18n="filter_type_freelance">Freelance</option>
+                        </select>
+
+                        <div class="jobs-count">
+                            <strong id="jobCount">0</strong>
+                            <span data-i18n="jobs_found">jobs found</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Grid -->
+                <div class="jobs-grid">
+                    <!-- Dynamic content loaded via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: var(--spacing-md);">
+                        <div class="logo-icon">T</div>
+                        <span>Télétravail</span>
+                    </div>
+                    <p style="color: var(--muted-text);" data-i18n="footer_tagline">
+                        Connecting professionals with world-class remote opportunities.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_quick_links">Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html" data-i18n="nav_jobs">Browse Jobs</a></li>
+                        <li><a href="register.html" data-i18n="nav_join">Create Account</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_for_companies">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+                        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-i18n="footer_resources">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Télétravail. <span data-i18n="footer_rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/roles.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/shared/ui.js"></script>
+
+    <!-- Jobs Data -->
+    <script src="assets/js/data/jobs.js"></script>
+
+    <!-- Elite Jobs Modules -->
+    <script src="assets/js/jobs/JobsDataLayer.js"></script>
+    <script src="assets/js/jobs/JobsFilterEngine.js"></script>
+    <script src="assets/js/jobs/JobsRenderer.js"></script>
+    <script src="assets/js/jobs/JobsAnimations.js"></script>
+    <script src="assets/js/jobs/JobsController.js"></script>
+
+    <!-- Main Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/animations-premium.js"></script>
+    <script src="assets/js/page-transition-manager.js"></script>
+</body>
+
+</html>

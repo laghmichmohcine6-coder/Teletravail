@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Télétravail Dashboard - Manage your remote work profile">
+    <title>Dashboard - Télétravail</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/premium-enhancements.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <div class="logo-icon">T</div>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper page-transition">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">T</div>
+                <span class="sidebar-logo-text">Télétravail</span>
+            </div>
+
+            <nav>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item">
+                        <a href="dashboard.html" class="sidebar-menu-link active">
+                            <span class="sidebar-menu-icon"><i class="fas fa-th-large"></i></span>
+                            <span data-i18n="nav_overview">Overview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="dashboard-applications.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-file-alt"></i></span>
+                            <span data-i18n="nav_applications">My Applications</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="profile.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-user"></i></span>
+                            <span data-i18n="nav_profile">Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" data-action="logout">
+                            <span class="sidebar-menu-icon"><i class="fas fa-sign-out-alt"></i></span>
+                            <span data-i18n="nav_logout">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-user">
+                <img src="https://ui-avatars.com/api/?name=Mohcine&background=D4AF37&color=0B0B0B&size=128"
+                    alt="User Avatar" class="sidebar-user-avatar">
+                <div class="sidebar-user-info">
+                    <h4>Mohcine</h4>
+                    <p>mohcine@gmail.com</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <div class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="topbar-welcome">
+                        <h2 data-i18n="dash_welcome">Your Remote Career Hub Starts Here</h2>
+                        <p data-i18n="dash_welcome_sub">Here's what's happening with your remote job search</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="topbar-search">
+                        <i class="fas fa-search topbar-search-icon"></i>
+                        <input type="text" placeholder="Search jobs, companies...">
+                    </div>
+                    <div class="topbar-notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value" id="stat-applications">0</div>
+                                <p class="stat-card-label" data-i18n="stat_total_apps">Total Applications</p>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+3 this week</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value" id="stat-saved">0</div>
+                                <p class="stat-card-label" data-i18n="stat_saved">Saved Jobs</p>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+2 new</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value" id="stat-messages">0</div>
+                                <p class="stat-card-label" data-i18n="stat_messages">Messages</p>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>3 unread</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card-header">
+                            <div>
+                                <div class="stat-card-value" id="stat-views">0</div>
+                                <p class="stat-card-label" data-i18n="stat_profile_views">Profile Views</p>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+15 this month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications Table -->
+                <div style="margin-top: var(--spacing-xl);">
+                    <h3 style="color: var(--text-light); margin-bottom: var(--spacing-lg);" data-i18n="my_applications">
+                        My Applications</h3>
+
+                    <div class="dashboard-table-container">
+                        <table class="dashboard-table applications-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="dash_pos">Position</th>
+                                    <th data-i18n="dash_company">Company</th>
+                                    <th data-i18n="dash_applied">Applied Date</th>
+                                    <th data-i18n="dash_status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/roles.js"></script>
+    <script src="assets/js/core/guards.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/shared/ui.js"></script>
+    <script src="assets/js/user/user-dashboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/animations-premium.js"></script>
+    <script src="assets/js/page-transition-manager.js"></script>
+</body>
+
+</html>

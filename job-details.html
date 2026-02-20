@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Job Details - Télétravail">
+    <title>Job Details - Télétravail</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/page-transitions.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/job-details.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ScrollReveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Apply Now button styles are in assets/css/job-details.css (.btn-apply-large) -->
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-logo">
+            <div class="logo-icon">T</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <span>Télétravail</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li><a href="jobs.html" class="nav-link active" data-i18n="nav_jobs">Jobs</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="company-register.html" class="nav-link" data-i18n="nav_for_companies">For Companies</a>
+                </li>
+                <li>
+                    <div class="language-selector" style="display: flex; gap: 5px; margin: 0 10px;">
+                        <button class="lang-btn active" data-lang="en"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">EN</button>
+                        <button class="lang-btn" data-lang="fr"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 5px; font-size: 0.8rem;">FR</button>
+                    </div>
+                </li>
+                <li><a href="login.html" class="btn btn-ghost" data-i18n="nav_login">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary" data-i18n="nav_join">Join Now</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Job Details Content -->
+    <div class="job-details-hero">
+        <div class="container">
+            <a href="jobs.html"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold-accent); margin-bottom: var(--spacing-lg); text-decoration: none; font-weight: 500;">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="back_to_jobs">Back to Jobs</span>
+            </a>
+
+            <div id="jobContent" class="job-details-grid" style="visibility: hidden;">
+                <!-- Main Content -->
+                <div class="details-card reveal-up">
+                    <div class="job-header-section">
+                        <div class="company-logo-large" id="job-logo">
+                            <!-- Logo letter injected here -->
+                        </div>
+                        <div>
+                            <h1 class="job-title-large" id="job-title">Job Title</h1>
+                            <div class="company-name-link">
+                                <i class="fas fa-building"></i> <span id="job-company">Company Name</span>
+                            </div>
+                            <div class="job-badges" style="margin-top: var(--spacing-md);">
+                                <span class="badge badge-location"><i class="fas fa-map-marker-alt"></i> <span
+                                        id="job-location">Location</span></span>
+                                <span class="badge badge-type"><i class="fas fa-clock"></i> <span
+                                        id="job-type">Type</span></span>
+                                <span class="badge badge-category"><i class="fas fa-tag"></i> <span
+                                        id="job-category">Category</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-rich-text">
+                        <h3 data-i18n="about_role">About the Role</h3>
+                        <div id="job-description">
+                            <!-- Description injected here -->
+                        </div>
+
+                        <h3 data-i18n="responsibilities">Responsibilities</h3>
+                        <ul id="job-responsibilities">
+                            <!-- List items injected here -->
+                        </ul>
+
+                        <h3 data-i18n="requirements">Requirements</h3>
+                        <ul id="job-requirements">
+                            <!-- List items injected here -->
+                        </ul>
+
+                        <div id="benefits-section" style="display: none;">
+                            <h3 data-i18n="benefits_title">Benefits</h3>
+                            <ul id="job-benefits">
+                                <!-- Benefits injected here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar-wrapper">
+                    <div class="sidebar-card reveal-left">
+                        <div class="action-buttons">
+                            <button id="applyBtn" class="btn btn-primary btn-apply-large">
+                                <span data-i18n="apply_now">Apply Now</span> <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-ghost"
+                                style="width: 100%; border-color: rgba(198, 166, 75, 0.3); color: var(--gold-accent);">
+                                <i class="far fa-bookmark"></i> <span data-i18n="save_job">Save Job</span>
+                            </button>
+                        </div>
+
+                        <div class="sidebar-info-row">
+                            <span class="info-label" data-i18n="label_salary">Salary</span>
+                            <span class="info-value salary" id="job-salary">$0k - $0k</span>
+                        </div>
+                        <div class="sidebar-info-row">
+                            <span class="info-label" data-i18n="label_posted">Posted</span>
+                            <span class="info-value" id="job-posted">Yesterday</span>
+                        </div>
+                        <div class="sidebar-info-row">
+                            <span class="info-label" data-i18n="label_experience">Experience</span>
+                            <span class="info-value" id="job-experience">Entry</span>
+                        </div>
+
+                        <div
+                            style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
+                            <p style="color: var(--muted-text); font-size: 0.9rem; margin-bottom: var(--spacing-sm);"
+                                data-i18n="share_job">
+                                Share this job:</p>
+                            <div style="display: flex; gap: var(--spacing-sm);">
+                                <button class="btn btn-ghost btn-sm"><i class="fab fa-linkedin"></i></button>
+                                <button class="btn btn-ghost btn-sm"><i class="fab fa-twitter"></i></button>
+                                <button class="btn btn-ghost btn-sm"><i class="fas fa-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message (Hidden by default) -->
+            <div id="errorMessage" style="text-align: center; padding: 5rem; display: none;">
+                <h2 style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-exclamation-circle"
+                        style="color: var(--gold-accent);"></i></h2>
+                <h2 style="margin-bottom: 1rem; color: var(--text-light);" data-i18n="job_not_found">Job Not Found</h2>
+                <p style="color: var(--muted-text); margin-bottom: 2rem;" data-i18n="job_not_found_desc">The job you are
+                    looking for does not exist.
+                </p>
+                <a href="jobs.html" class="btn btn-primary" data-i18n="btn_browse">Browse Jobs</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal-overlay">
+        <div class="apply-modal">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <h2 style="color: var(--gold-accent); margin-bottom: var(--spacing-sm);"><span
+                    data-i18n="modal_apply_for">Apply for</span> <span id="modal-job-title">Job</span></h2>
+            <p style="color: var(--muted-text); margin-bottom: var(--spacing-lg);"><span data-i18n="modal_at">at</span>
+                <span id="modal-job-company">Company</span>
+            </p>
+
+            <form id="applicationForm">
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;"
+                        data-i18n="form_full_name">Full Name</label>
+                    <input type="text" required class="form-input"
+                        style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                </div>
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;"
+                        data-i18n="form_email_addr">Email
+                        Address</label>
+                    <input type="email" required class="form-input"
+                        style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                </div>
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;"
+                        data-i18n="form_resume">Resume / CV
+                        Link</label>
+                    <input type="url" placeholder="https://linkedin.com/in/..." class="form-input"
+                        style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm);">
+                </div>
+                <div style="margin-bottom: var(--spacing-xl);">
+                    <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;"
+                        data-i18n="form_cover_letter">Cover Letter</label>
+                    <textarea rows="4" class="form-input"
+                        style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; padding: 1rem; font-size: 1.1rem; cursor: pointer;" data-i18n="btn_submit">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: var(--spacing-md);">
+                        <div class="logo-icon">T</div>
+                        <span>Télétravail</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html">Browse Jobs</a></li>
+                        <li><a href="register.html">Create Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Télétravail. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/core/storage.js"></script>
+    <script src="assets/js/core/auth.js"></script>
+    <script src="assets/js/core/i18n.js"></script>
+    <script src="assets/js/shared/ui.js"></script>
+
+    <!-- IMPORTANT: Load Jobs Data -->
+    <script src="assets/js/data/jobs.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/animations-premium.js"></script>
+
+    <!-- Page Specific Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Get Job ID from URL
+            const params = new URLSearchParams(window.location.search);
+            const jobId = params.get("id");
+
+            // 2. Validate ID
+            if (!jobId) {
+                window.location.href = 'jobs.html';
+                return;
+            }
+
+            // 3. Get Job Data
+            let job = null;
+
+            // Try to get job from global JobsData object first
+            if (window.JobsData && typeof window.JobsData.getById === 'function') {
+                job = window.JobsData.getById(jobId);
+            }
+            // Fallback: If JobsData doesn't exist or doesn't have getById, try to find in global jobs array
+            else if (window.jobs && Array.isArray(window.jobs)) {
+                job = window.jobs.find(j => j.id === jobId);
+            }
+            // Another fallback: if JOBS_DATA exists (common pattern)
+            else if (window.JOBS_DATA && Array.isArray(window.JOBS_DATA)) {
+                job = window.JOBS_DATA.find(j => j.id === jobId);
+            }
+
+            // 4. Handle Job Not Found
+            if (!job) {
+                document.getElementById('jobContent').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            // 5. Populate Data Fields
+            // Helper function to safely set text content
+            const setSafeText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text || '';
+            };
+
+            // Basic Info
+            setSafeText('job-title', job.title);
+            setSafeText('job-company', job.company);
+            setSafeText('job-salary', job.salary);
+            setSafeText('job-location', job.location);
+            setSafeText('job-type', job.type);
+            setSafeText('job-category', job.category);
+            setSafeText('job-experience', job.experienceLevel || 'Not specified');
+
+            // Logo
+            const logoEl = document.getElementById('job-logo');
+            if (logoEl) {
+                // Determine if we have an image URL or just initials
+                if (job.companyLogo && job.companyLogo.length > 3 && (job.companyLogo.startsWith('http') || job.companyLogo.startsWith('/'))) {
+                    logoEl.innerHTML = `<img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:cover;">`;
+                } else {
+                    logoEl.textContent = job.companyLogo || job.company.charAt(0);
+                }
+            }
+
+            // Posted Date logic
+            const postedEl = document.getElementById('job-posted');
+            if (postedEl) {
+                if (job.createdAt) {
+                    try {
+                        const date = new Date(job.createdAt);
+                        postedEl.textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    } catch (e) { postedEl.textContent = job.postedDate || 'Recently'; }
+                } else {
+                    postedEl.textContent = job.postedDate || 'Recently';
+                }
+            }
+
+            // Description (HTMl allowed)
+            const descEl = document.getElementById('job-description');
+            if (descEl) {
+                descEl.innerHTML = job.fullDescription || `<p>${job.description || ''}</p>`;
+            }
+
+            // Helper to populate lists
+            const populateList = (listId, items) => {
+                const listEl = document.getElementById(listId);
+                if (!listEl) return;
+                listEl.innerHTML = '';
+
+                if (!items || items.length === 0) return;
+
+                // Handle single string case
+                const listItems = Array.isArray(items) ? items : [items];
+
+                listItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    listEl.appendChild(li);
+                });
+            };
+
+            populateList('job-responsibilities', job.responsibilities);
+            populateList('job-requirements', job.requirements);
+
+            // Benefits (Optional)
+            const benefitsSection = document.getElementById('benefits-section');
+            if (benefitsSection && job.benefits && job.benefits.length > 0) {
+                benefitsSection.style.display = 'block';
+                populateList('job-benefits', job.benefits);
+            } else if (benefitsSection) {
+                benefitsSection.style.display = 'none';
+            }
+
+            // Update Modal Data
+            setSafeText('modal-job-title', job.title);
+            setSafeText('modal-job-company', job.company);
+            document.title = `${job.title} at ${job.company} - Télétravail`;
+
+            // 6. Show Content
+            document.getElementById('jobContent').style.visibility = 'visible';
+
+            // 7. Modal Interaction Logic
+            const modal = document.getElementById('applicationModal');
+            const applyBtn = document.getElementById('applyBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const form = document.getElementById('applicationForm');
+
+            if (applyBtn) {
+                applyBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                    setTimeout(() => {
+                        alert('Application Submitted Successfully!');
+                        modal.classList.remove('active');
+                        btn.innerHTML = originalText;
+                        form.reset();
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+    <script src="assets/js/page-transition-manager.js"></script>
+</body>
+
+</html>

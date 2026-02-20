@@ -1,0 +1,393 @@
+/*
+ * Télétravail - Premium Dashboard Enhancements
+ * Additional micro-interactions and premium effects
+ */
+
+/* ========================================
+   JOB CARD PREMIUM ANIMATIONS
+======================================== */
+.job-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* Gold Border Shimmer */
+.job-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gold-gradient);
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(8px);
+}
+
+.job-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(198, 166, 75, 0.25);
+}
+
+.job-card:hover::after {
+    opacity: 0.3;
+}
+
+/* ========================================
+   APPLICATION CARD PREMIUM ANIMATIONS
+======================================== */
+.application-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* Gold Border Shimmer */
+.application-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gold-gradient);
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(8px);
+}
+
+.application-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(198, 166, 75, 0.2);
+}
+
+.application-card:hover::after {
+    opacity: 0.25;
+}
+
+/* ========================================
+   BUTTON MICRO-INTERACTIONS
+======================================== */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Press Effect */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Primary Button Enhancement */
+.btn-primary {
+    box-shadow: 0 4px 16px rgba(198, 166, 75, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(198, 166, 75, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 12px rgba(198, 166, 75, 0.4);
+}
+
+/* Ghost Button Enhancement */
+.btn-ghost {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ghost:hover {
+    background: rgba(198, 166, 75, 0.12);
+    border-color: var(--gold-accent);
+    transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ========================================
+   TOPBAR ENHANCEMENTS
+======================================== */
+.dashboard-topbar {
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Search Input Enhancement */
+.topbar-search input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topbar-search input:focus {
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 0 4px rgba(198, 166, 75, 0.15),
+        0 4px 12px rgba(198, 166, 75, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Notification Badge Pulse */
+.notification-badge {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(198, 166, 75, 0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 4px rgba(198, 166, 75, 0);
+    }
+}
+
+/* Notification Icon Hover */
+.topbar-notifications {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topbar-notifications:hover {
+    background: rgba(198, 166, 75, 0.15);
+    border-color: var(--gold-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(198, 166, 75, 0.2);
+}
+
+/* ========================================
+   SIDEBAR USER SECTION
+======================================== */
+.sidebar-user {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) calc(var(--spacing-lg) * -1) 0;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+}
+
+.sidebar-user:hover {
+    background: rgba(198, 166, 75, 0.08);
+}
+
+.sidebar-user-avatar {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-user:hover .sidebar-user-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(198, 166, 75, 0.6);
+}
+
+/* ========================================
+   BADGE ENHANCEMENTS
+======================================== */
+.badge {
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Badge Specific Enhancements */
+.status-badge {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status-interview {
+    position: relative;
+    overflow: hidden;
+}
+
+.status-interview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(33, 150, 243, 0.3),
+            transparent);
+    animation: shimmerBadge 2s infinite;
+}
+
+@keyframes shimmerBadge {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ========================================
+   TABLE ROW ENHANCEMENT
+======================================== */
+.dashboard-table tbody tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-table tbody tr:hover {
+    background: rgba(198, 166, 75, 0.08);
+    transform: translateX(4px);
+}
+
+/* ========================================
+   FILTER SELECT ENHANCEMENT
+======================================== */
+.filter-select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-select:hover {
+    border-color: rgba(198, 166, 75, 0.6);
+    background: var(--card-bg);
+}
+
+.filter-select:focus {
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 0 3px rgba(198, 166, 75, 0.15);
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   ICON HOVER ANIMATIONS
+======================================== */
+.fas,
+.far,
+.fab {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover .fas,
+button:hover .far,
+a:hover .fas,
+a:hover .far {
+    transform: scale(1.1);
+}
+
+/* Specific Icon Animations */
+.fa-bookmark:hover {
+    animation: bookmarkBounce 0.6s ease;
+}
+
+@keyframes bookmarkBounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(-5deg);
+    }
+}
+
+.fa-trash:hover {
+    animation: trashShake 0.5s ease;
+}
+
+@keyframes trashShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-3px);
+    }
+
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS FOR ALL INTERACTIVE ELEMENTS
+======================================== */
+a,
+button,
+input,
+select,
+textarea {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+======================================== */
+/* Use GPU acceleration for smooth animations */
+.stat-card,
+.job-card,
+.application-card,
+.sidebar-menu-link,
+.btn {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Remove will-change after hover */
+.stat-card:not(:hover),
+.job-card:not(:hover),
+.application-card:not(:hover) {
+    will-change: auto;
+}
+
+/* ========================================
+   APPLY NOW BUTTON — TRANSFORM KILL SWITCH
+   This section MUST stay at the bottom of this file.
+   It overrides the .btn-primary and button rules above
+   that would otherwise move/scale the Apply Now button.
+======================================== */
+
+/* Base state: no transform, scoped transition only */
+.btn-apply-large,
+#applyBtn {
+    transform: none !important;
+    transition: box-shadow 0.3s ease, filter 0.3s ease !important;
+    will-change: box-shadow !important;
+}
+
+/* Hover: beats .btn-primary:hover { transform: translateY(-2px) } */
+.btn-apply-large:hover,
+#applyBtn:hover {
+    transform: none !important;
+}
+
+/* Focus: beats any transform on focus */
+.btn-apply-large:focus,
+.btn-apply-large:focus-visible,
+#applyBtn:focus,
+#applyBtn:focus-visible {
+    transform: none !important;
+}
+
+/* Active: beats .btn:active { transform: scale(0.98) }
+         and .btn-primary:active { transform: translateY(0) scale(0.98) } */
+.btn-apply-large:active,
+#applyBtn:active {
+    transform: none !important;
+}
