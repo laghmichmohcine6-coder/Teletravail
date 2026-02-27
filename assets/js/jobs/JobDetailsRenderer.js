@@ -41,6 +41,7 @@ class JobDetailsRenderer {
     }
 
     render(job) {
+        const t = window.i18n ? window.i18n.t.bind(window.i18n) : (k, d) => d || k;
         // 1. Render Main Content using the new CSS classes
         const mainContent = `
             <div class="details-card reveal-up">
@@ -63,13 +64,13 @@ class JobDetailsRenderer {
                 </div>
 
                 <div class="job-rich-text">
-                    <h3>About the Role</h3>
+                    <h3>${t('about_role')}</h3>
                     ${job.fullDescription || `<p>${job.description}</p>`}
 
-                    ${this._renderList('Responsibilities', job.responsibilities)}
-                    ${this._renderList('Requirements', job.requirements)}
+                    ${this._renderList(t('responsibilities'), job.responsibilities)}
+                    ${this._renderList(t('requirements'), job.requirements)}
                 
-                    <h3>Required Skills</h3>
+                    <h3>${t('required_skills')}</h3>
                     <div class="skills-container">
                         ${(job.skills || []).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
                     </div>
@@ -83,32 +84,32 @@ class JobDetailsRenderer {
                 <div class="sidebar-card reveal-left">
                     <div class="action-buttons">
                         <button id="applyBtn" class="btn btn-primary btn-apply-large">
-                            Apply Now <i class="fas fa-arrow-right"></i>
+                            ${t('apply_now')} <i class="fas fa-arrow-right"></i>
                         </button>
                         <button class="btn btn-ghost" style="width: 100%; border-color: rgba(198, 166, 75, 0.3); color: var(--gold-accent);">
-                            <i class="far fa-bookmark"></i> Save Job
+                            <i class="far fa-bookmark"></i> ${t('save_job')}
                         </button>
                     </div>
 
                     <div class="sidebar-info-row">
-                        <span class="info-label">Salary</span>
+                        <span class="info-label">${t('label_salary')}</span>
                         <span class="info-value salary">${job.salary}</span>
                     </div>
                     <div class="sidebar-info-row">
-                        <span class="info-label">Posted</span>
+                        <span class="info-label">${t('label_posted')}</span>
                         <span class="info-value">${this._formatDate(job.createdAt)}</span>
                     </div>
                     <div class="sidebar-info-row">
-                        <span class="info-label">Location</span>
+                        <span class="info-label">${t('label_experience')}</span>
                         <span class="info-value">${job.location}</span>
                     </div>
                     <div class="sidebar-info-row">
-                        <span class="info-label">Type</span>
+                        <span class="info-label">${t('filter_type')}</span>
                         <span class="info-value">${job.type}</span>
                     </div>
                     
                     <div style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid rgba(255,255,255,0.1);">
-                        <p style="color: var(--muted-text); font-size: 0.9rem; margin-bottom: var(--spacing-sm);">Share this job:</p>
+                        <p style="color: var(--muted-text); font-size: 0.9rem; margin-bottom: var(--spacing-sm);">${t('share_job')}</p>
                         <div style="display: flex; gap: var(--spacing-sm);">
                             <button class="btn btn-ghost btn-sm"><i class="fab fa-linkedin"></i></button>
                             <button class="btn btn-ghost btn-sm"><i class="fab fa-twitter"></i></button>
@@ -156,10 +157,11 @@ class JobDetailsRenderer {
     }
 
     _formatDate(dateString) {
-        if (!dateString) return 'Recently';
+        if (!dateString) return window.i18n ? window.i18n.t('recently_posted') : 'Recently';
         try {
             const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const lang = (window.i18n && window.i18n.currentLang) || 'en';
+            return date.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         } catch (e) {
             return dateString;
         }
@@ -169,38 +171,39 @@ class JobDetailsRenderer {
         // Remove existing modal if any
         const existingModal = document.querySelector('.modal-overlay');
         if (existingModal) existingModal.remove();
+        const t = window.i18n ? window.i18n.t.bind(window.i18n) : (k, d) => d || k;
 
         const modalHtml = `
             <div id="applicationModal" class="modal-overlay">
                 <div class="apply-modal">
                     <button class="modal-close" id="closeModalBtn">&times;</button>
                     
-                    <h2 style="color: var(--gold-accent); margin-bottom: var(--spacing-sm);">Apply for ${job.title}</h2>
-                    <p style="color: var(--muted-text); margin-bottom: var(--spacing-lg);">at ${job.company}</p>
+                    <h2 style="color: var(--gold-accent); margin-bottom: var(--spacing-sm);">${t('modal_apply_for')} ${job.title}</h2>
+                    <p style="color: var(--muted-text); margin-bottom: var(--spacing-lg);">${t('modal_at')} ${job.company}</p>
 
                     <form id="applicationForm">
                         <div style="margin-bottom: var(--spacing-md);">
-                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Full Name</label>
+                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">${t('form_full_name')}</label>
                             <input type="text" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm); outline: none;">
                         </div>
                         
                         <div style="margin-bottom: var(--spacing-md);">
-                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Email Address</label>
+                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">${t('form_email_addr')}</label>
                             <input type="email" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm); outline: none;">
                         </div>
 
                         <div style="margin-bottom: var(--spacing-md);">
-                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Resume / CV Link</label>
+                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">${t('form_resume')}</label>
                             <input type="url" placeholder="https://linkedin.com/in/..." style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm); outline: none;">
                         </div>
 
                          <div style="margin-bottom: var(--spacing-xl);">
-                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Cover Letter</label>
+                            <label style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">${t('form_cover_letter')}</label>
                             <textarea rows="4" style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: var(--radius-sm); outline: none; font-family: inherit;"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; cursor: pointer;">
-                            Submit Application
+                            ${t('btn_submit')}
                         </button>
                     </form>
                 </div>
@@ -254,10 +257,11 @@ class JobDetailsRenderer {
                     btn.style.borderColor = '#48bb78';
 
                     // Simple toast fallback if UI is not available
+                    const successMsg = window.i18n ? window.i18n.t('application_submitted') : 'Application submitted successfully!';
                     if (window.UI && window.UI.showToast) {
-                        window.UI.showToast('Application submitted successfully!', 'success');
+                        window.UI.showToast(successMsg, 'success');
                     } else {
-                        alert('Application submitted successfully!');
+                        console.log(successMsg);
                     }
 
                     setTimeout(() => {

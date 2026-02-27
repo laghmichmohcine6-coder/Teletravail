@@ -35,15 +35,16 @@
 
         // Confirmation modal
         showConfirm: function (message, onConfirm, onCancel) {
+            const t = window.i18n ? window.i18n.t.bind(window.i18n) : (k) => k;
             const modal = document.createElement('div');
             modal.className = 'modal-overlay';
             modal.innerHTML = `
                 <div class="modal-content">
-                    <h3>Confirm Action</h3>
+                    <h3>${t('confirm_action') !== 'confirm_action' ? t('confirm_action') : 'Confirm'}</h3>
                     <p>${message}</p>
                     <div class="modal-actions">
-                        <button class="btn btn-ghost" data-action="cancel">Cancel</button>
-                        <button class="btn btn-primary" data-action="confirm">Confirm</button>
+                        <button class="btn btn-ghost" data-action="cancel">${t('btn_cancel') !== 'btn_cancel' ? t('btn_cancel') : 'Cancel'}</button>
+                        <button class="btn btn-primary" data-action="confirm">${t('btn_confirm') !== 'btn_confirm' ? t('btn_confirm') : 'Confirm'}</button>
                     </div>
                 </div>
             `;
@@ -102,7 +103,9 @@
         formatDate: function (dateString) {
             const date = new Date(dateString);
             const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return date.toLocaleDateString('en-US', options);
+            const lang = (window.i18n && window.i18n.currentLang) || 'en';
+            const locale = lang === 'fr' ? 'fr-FR' : 'en-US';
+            return date.toLocaleDateString(locale, options);
         },
 
         // Format time ago
@@ -110,6 +113,7 @@
             const date = new Date(dateString);
             const now = new Date();
             const seconds = Math.floor((now - date) / 1000);
+            const lang = (window.i18n && window.i18n.currentLang) || 'en';
 
             const intervals = {
                 year: 31536000,
@@ -120,14 +124,25 @@
                 minute: 60
             };
 
+            const unitLabels = {
+                en: { year: 'year', month: 'month', week: 'week', day: 'day', hour: 'hour', minute: 'minute', ago: 'ago', just_now: 'Just now' },
+                fr: { year: 'an', month: 'mois', week: 'semaine', day: 'jour', hour: 'heure', minute: 'minute', ago: 'il y a', just_now: 'À l\'instant' }
+            };
+            const labels = unitLabels[lang] || unitLabels.en;
+
             for (const [unit, secondsInUnit] of Object.entries(intervals)) {
                 const interval = Math.floor(seconds / secondsInUnit);
                 if (interval >= 1) {
-                    return interval === 1 ? `1 ${unit} ago` : `${interval} ${unit}s ago`;
+                    const unitLabel = labels[unit];
+                    const plural = (lang === 'fr' && unit !== 'mois') ? (interval > 1 ? 's' : '') : (interval > 1 ? 's' : '');
+                    if (lang === 'fr') {
+                        return `${labels.ago} ${interval} ${unitLabel}${interval > 1 && unit !== 'month' ? 's' : ''}`;
+                    }
+                    return `${interval} ${unitLabel}${interval > 1 ? 's' : ''} ${labels.ago}`;
                 }
             }
 
-            return 'Just now';
+            return labels.just_now;
         },
 
         // Update navbar based on auth state
@@ -139,27 +154,45 @@
 
             if (currentUser) {
                 const dashboardLink = currentUser.role === 'user' ? 'dashboard.html' : 'company-dashboard.html';
-                const dashboardText = currentUser.role === 'user' ? 'Dashboard' : 'Company Dashboard';
 
                 navMenu.innerHTML = `
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="jobs.html" class="nav-link">Jobs</a></li>
-                    ${currentUser.role === 'company' ? '<li><a href="company-post-job.html" class="nav-link">Post Job</a></li>' : ''}
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="${dashboardLink}" class="btn btn-ghost">${dashboardText}</a></li>
-                    <li><a href="#" class="btn btn-primary" onclick="Auth.logout(); return false;">Logout</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                    <li><a href="jobs.html" class="nav-link" data-i18n="nav_jobs">Jobs</a></li>
+                    ${currentUser.role === 'company' ? '<li><a href="company-post-job.html" class="nav-link" data-i18n="nav_post_job">Post Job</a></li>' : ''}
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                    <li><a href="${dashboardLink}" class="btn btn-ghost" data-i18n="nav_overview">Dashboard</a></li>
+                    <li><a href="#" class="btn btn-primary" onclick="Auth.logout(); return false;" data-i18n="nav_logout">Logout</a></li>
+                    <li>
+                        <div class="language-selector" style="display:flex;gap:5px;margin:0 10px;">
+                            <button class="lang-btn" data-lang="en" style="background:none;border:1px solid var(--border-color);color:var(--muted-text);cursor:pointer;padding:2px 5px;font-size:0.8rem;">EN</button>
+                            <button class="lang-btn" data-lang="fr" style="background:none;border:1px solid var(--border-color);color:var(--muted-text);cursor:pointer;padding:2px 5px;font-size:0.8rem;">FR</button>
+                        </div>
+                    </li>
                 `;
             } else {
                 navMenu.innerHTML = `
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="jobs.html" class="nav-link">Jobs</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="#" class="nav-link" onclick="UI.showCompanyMenu(event)">For Companies</a></li>
-                    <li><a href="login.html" class="btn btn-ghost">Login</a></li>
-                    <li><a href="register.html" class="btn btn-primary">Join Now</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                    <li><a href="jobs.html" class="nav-link" data-i18n="nav_jobs">Jobs</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                    <li><a href="company-register.html" class="nav-link" data-i18n="nav_for_companies">For Companies</a></li>
+                    <li>
+                        <div class="language-selector" style="display:flex;gap:5px;margin:0 10px;">
+                            <button class="lang-btn" data-lang="en" style="background:none;border:1px solid var(--border-color);color:var(--muted-text);cursor:pointer;padding:2px 5px;font-size:0.8rem;">EN</button>
+                            <button class="lang-btn" data-lang="fr" style="background:none;border:1px solid var(--border-color);color:var(--muted-text);cursor:pointer;padding:2px 5px;font-size:0.8rem;">FR</button>
+                        </div>
+                    </li>
+                    <li><a href="login.html" class="btn btn-ghost" data-i18n="nav_login">Login</a></li>
+                    <li><a href="register.html" class="btn btn-primary" data-i18n="nav_join">Join Now</a></li>
                 `;
+            }
+
+            // Re-apply i18n translations to the newly injected nav items
+            if (window.i18n) {
+                window.i18n.updatePage();
+                window.i18n.updateLanguageButtons();
+                window.i18n.attachLanguageListeners();
             }
         },
 

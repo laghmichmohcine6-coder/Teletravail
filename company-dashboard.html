@@ -209,26 +209,14 @@
             Guards.redirectIfUnauthenticated();
 
             // Company Info
-            const user = Auth.getCurrentUser(); // This should check if it's a company user ideally, or just use generic
+            const user = Auth.getCurrentUser();
             if (user) {
                 const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=D4AF37&color=0B0B0B`;
                 document.getElementById('sidebarName').textContent = user.name;
                 document.getElementById('sidebarEmail').textContent = user.email;
                 document.getElementById('sidebarAvatar').src = avatarUrl;
             }
-
-            // Language Selector
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const lang = e.target.getAttribute('data-lang');
-                    if (window.i18n) {
-                        window.i18n.setLanguage(lang);
-                        langButtons.forEach(b => b.classList.remove('active'));
-                        e.target.classList.add('active');
-                    }
-                });
-            });
+            // lang-btn listeners are handled centrally by i18n.js attachLanguageListeners()
         });
     </script>
 </body>

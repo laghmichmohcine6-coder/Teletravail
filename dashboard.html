@@ -50,13 +50,19 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
+                        <a href="dashboard-jobs.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-briefcase"></i></span>
+                            <span data-i18n="nav_remote_jobs">Remote Jobs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
                         <a href="profile.html" class="sidebar-menu-link">
                             <span class="sidebar-menu-icon"><i class="fas fa-user"></i></span>
                             <span data-i18n="nav_profile">Profile</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link" data-action="logout">
+                        <a href="#" class="sidebar-menu-link" onclick="if(window.Auth) Auth.logout(); return false;">
                             <span class="sidebar-menu-icon"><i class="fas fa-sign-out-alt"></i></span>
                             <span data-i18n="nav_logout">Logout</span>
                         </a>
@@ -89,9 +95,18 @@
                 </div>
 
                 <div class="topbar-right">
+                    <!-- Language Selector -->
+                    <div class="language-selector" style="display: flex; gap: 5px; margin-right: 15px;">
+                        <button class="lang-btn" data-lang="en"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 8px; font-size: 0.8rem; border-radius: 4px;">EN</button>
+                        <button class="lang-btn" data-lang="fr"
+                            style="background: none; border: 1px solid var(--border-color); color: var(--muted-text); cursor: pointer; padding: 2px 8px; font-size: 0.8rem; border-radius: 4px;">FR</button>
+                    </div>
+
                     <div class="topbar-search">
                         <i class="fas fa-search topbar-search-icon"></i>
-                        <input type="text" placeholder="Search jobs, companies...">
+                        <input type="text" placeholder="Search jobs, companies..."
+                            data-i18n-placeholder="search_jobs_placeholder">
                     </div>
                     <div class="topbar-notifications">
                         <i class="fas fa-bell"></i>
@@ -116,7 +131,7 @@
                         </div>
                         <div class="stat-card-change positive">
                             <i class="fas fa-arrow-up"></i>
-                            <span>+3 this week</span>
+                            <span data-i18n="stat_this_week">+3 this week</span>
                         </div>
                     </div>
 
@@ -132,7 +147,7 @@
                         </div>
                         <div class="stat-card-change positive">
                             <i class="fas fa-arrow-up"></i>
-                            <span>+2 new</span>
+                            <span data-i18n="stat_new">+2 new</span>
                         </div>
                     </div>
 
@@ -148,7 +163,7 @@
                         </div>
                         <div class="stat-card-change positive">
                             <i class="fas fa-arrow-up"></i>
-                            <span>3 unread</span>
+                            <span data-i18n="stat_unread">3 unread</span>
                         </div>
                     </div>
 
@@ -164,7 +179,7 @@
                         </div>
                         <div class="stat-card-change positive">
                             <i class="fas fa-arrow-up"></i>
-                            <span>+15 this month</span>
+                            <span data-i18n="stat_this_month">+15 this month</span>
                         </div>
                     </div>
                 </div>

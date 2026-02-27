@@ -74,8 +74,8 @@ function initializeNavigation() {
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
     if (state.isMenuOpen &&
-      !elements.navMenu.contains(e.target) &&
-      !elements.mobileMenuToggle.contains(e.target)) {
+      elements.navMenu && !elements.navMenu.contains(e.target) &&
+      elements.mobileMenuToggle && !elements.mobileMenuToggle.contains(e.target)) {
       closeMobileMenu();
     }
   });

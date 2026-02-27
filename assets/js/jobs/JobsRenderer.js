@@ -88,7 +88,7 @@ class JobsRenderer {
 
             <div class="job-footer">
                 <span class="job-salary">${this._escapeHtml(job.salary)}</span>
-                <button class="btn btn-primary job-apply-btn" onclick="event.stopPropagation();">
+                <button class="btn btn-primary job-apply-btn" onclick="event.stopPropagation(); window.location.href='job-details.html?id=${job.id}';">
                     ${window.i18n ? window.i18n.t('apply_now') : 'Apply Now'}
                     <i class="fas fa-arrow-right"></i>
                 </button>

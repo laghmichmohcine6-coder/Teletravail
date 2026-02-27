@@ -154,10 +154,13 @@ class MagneticButton {
     }
 }
 
-// Apply magnetic effect to primary buttons
+// Apply magnetic effect to primary buttons (skip Apply Now — inline transform bypasses !important)
 document.addEventListener('DOMContentLoaded', () => {
     const magneticButtons = document.querySelectorAll('.btn-primary');
-    magneticButtons.forEach(btn => new MagneticButton(btn));
+    magneticButtons.forEach(btn => {
+        if (btn.id === 'applyBtn' || btn.classList.contains('btn-apply-large')) return;
+        new MagneticButton(btn);
+    });
 });
 
 // ========================================
@@ -209,10 +212,11 @@ function createRipple(event) {
     button.appendChild(ripple);
 }
 
-// Add ripple to all buttons
+// Add ripple to all buttons (skip Apply Now — child span expansion causes layout bump)
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
+        if (button.id === 'applyBtn' || button.classList.contains('btn-apply-large')) return;
         button.addEventListener('click', createRipple);
     });
 });

@@ -2,8 +2,9 @@
     'use strict';
 
     window.Guards = {
-        requireAuth: function (redirectUrl = 'login.html') {
-            const currentUser = Auth.getCurrentUser();
+        requireAuth: function (redirectUrl) {
+            redirectUrl = redirectUrl || 'login.html';
+            var currentUser = window.Auth ? Auth.getCurrentUser() : null;
             if (!currentUser) {
                 window.location.href = redirectUrl;
                 return false;
@@ -11,8 +12,9 @@
             return true;
         },
 
-        requireUser: function (redirectUrl = 'login.html') {
-            const currentUser = Auth.getCurrentUser();
+        requireUser: function (redirectUrl) {
+            redirectUrl = redirectUrl || 'login.html';
+            var currentUser = window.Auth ? Auth.getCurrentUser() : null;
             if (!currentUser || currentUser.role !== 'user') {
                 window.location.href = redirectUrl;
                 return false;
@@ -20,8 +22,9 @@
             return true;
         },
 
-        requireCompany: function (redirectUrl = 'company-login.html') {
-            const currentUser = Auth.getCurrentUser();
+        requireCompany: function (redirectUrl) {
+            redirectUrl = redirectUrl || 'company-login.html';
+            var currentUser = window.Auth ? Auth.getCurrentUser() : null;
             if (!currentUser || currentUser.role !== 'company') {
                 window.location.href = redirectUrl;
                 return false;
@@ -29,8 +32,9 @@
             return true;
         },
 
-        redirectIfAuthenticated: function (redirectUrl = null) {
-            const currentUser = Auth.getCurrentUser();
+        redirectIfAuthenticated: function (redirectUrl) {
+            redirectUrl = redirectUrl || null;
+            var currentUser = window.Auth ? Auth.getCurrentUser() : null;
             if (currentUser) {
                 if (redirectUrl) {
                     window.location.href = redirectUrl;
@@ -40,6 +44,12 @@
                     window.location.href = 'company-dashboard.html';
                 }
             }
+        },
+
+        // Alias used across multiple protected pages
+        redirectIfUnauthenticated: function (redirectUrl) {
+            redirectUrl = redirectUrl || 'login.html';
+            return this.requireAuth(redirectUrl);
         }
     };
 })();

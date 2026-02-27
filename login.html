@@ -24,18 +24,20 @@
                     <span class="auth-logo-text">Télétravail</span>
                 </a>
                 <div class="auth-header">
-                    <h2 data-i18n="nav_login">Your Professional Console</h2>
-                    <p data-i18n="hero_subtitle">Secure access to your workspace</p>
+                    <h2 data-i18n="login_title">Sign In</h2>
+                    <p data-i18n="login_subtitle">Secure access to your workspace</p>
                 </div>
                 <form id="loginForm">
                     <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-input" placeholder="example@gmail.com" required>
+                        <label for="email" class="form-label" data-i18n="login_email_label">Email Address</label>
+                        <input type="email" id="email" class="form-input"
+                            data-i18n-placeholder="login_placeholder_email" placeholder="example@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label" data-i18n="login_password_label">Password</label>
                         <div class="input-wrapper">
-                            <input type="password" id="password" class="form-input" placeholder="Enter your password"
+                            <input type="password" id="password" class="form-input"
+                                data-i18n-placeholder="login_placeholder_password" placeholder="Enter your password"
                                 required>
                             <button type="button" class="password-toggle" onclick="togglePassword()">
                                 <i class="fas fa-eye" id="toggleIcon"></i>
@@ -44,34 +46,36 @@
                     </div>
                     <div class="form-checkbox">
                         <input type="checkbox" id="rememberMe">
-                        <label for="rememberMe">Remember me</label>
+                        <label for="rememberMe" data-i18n="login_remember_me">Remember me</label>
                     </div>
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-sign-in-alt"></i> <span data-i18n="nav_login">Sign In</span>
+                        <i class="fas fa-sign-in-alt"></i> <span data-i18n="login_btn">Sign In</span>
                     </button>
                 </form>
                 <div class="demo-box">
-                    <div class="demo-title"><i class="fas fa-key"></i> Demo Credentials</div>
+                    <div class="demo-title"><i class="fas fa-key"></i> <span data-i18n="demo_credentials">Demo
+                            Credentials</span></div>
                     <div class="demo-item" onclick="copyToClipboard('mohcine@gmail.com', 'Email')">
                         <div>
-                            <div class="demo-label">Email</div>
+                            <div class="demo-label" data-i18n="demo_email_label">Email</div>
                             <div class="demo-value">mohcine@gmail.com</div>
                         </div>
                         <i class="fas fa-copy copy-icon"></i>
                     </div>
                     <div class="demo-item" onclick="copyToClipboard('Mohcine123!', 'Password')">
                         <div>
-                            <div class="demo-label">Password</div>
+                            <div class="demo-label" data-i18n="demo_password_label">Password</div>
                             <div class="demo-value">Mohcine123!</div>
                         </div>
                         <i class="fas fa-copy copy-icon"></i>
                     </div>
                 </div>
                 <div class="auth-footer">
-                    <p>Don't have an account? <a href="register.html" data-i18n="nav_join">Create one now</a></p>
-                    <p>Are you a company? <a href="company-login.html" data-i18n="nav_for_companies">Company Login</a>
-                    </p>
-                    <p><a href="index.html" data-i18n="nav_home">← Back to Home</a></p>
+                    <p><span data-i18n="no_account">Don't have an account?</span> <a href="register.html"
+                            data-i18n="create_account">Create one now</a></p>
+                    <p><span data-i18n="are_you_company">Are you a company?</span> <a href="company-login.html"
+                            data-i18n="company_login">Company Login</a></p>
+                    <p><a href="index.html" data-i18n="back_home">← Back to Home</a></p>
                 </div>
             </div>
         </div>
@@ -80,8 +84,8 @@
     <div class="success-overlay" id="successOverlay">
         <div class="success-content">
             <div class="success-icon"><i class="fas fa-check"></i></div>
-            <div class="success-text">Welcome Back!</div>
-            <div class="success-subtext">Redirecting to your dashboard...</div>
+            <div class="success-text" data-i18n="welcome_back">Welcome Back!</div>
+            <div class="success-subtext" data-i18n="redirecting_dashboard">Redirecting to your dashboard...</div>
         </div>
     </div>
     <script src="assets/js/core/storage.js"></script>

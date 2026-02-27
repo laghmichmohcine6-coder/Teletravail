@@ -73,7 +73,7 @@
                     <p id="sidebarEmail">company@email.com</p>
                 </div>
             </div>
-        </aside> 
+        </aside>
 
         <main class="dashboard-main">
             <div class="dashboard-topbar">
@@ -207,12 +207,14 @@
                 document.getElementById('benefits').value = job.benefits || '';
                 document.getElementById('status').value = job.status || 'active';
 
-                document.querySelector('.topbar-welcome h2').textContent = 'Edit Job'; // i18n should probably handle this dynamically if possible, but for now specific overrides
-                document.querySelector('.topbar-welcome h2').setAttribute('data-i18n', 'edit_job_title'); // Assuming we add this key
-                document.querySelector('button[type="submit"]').textContent = 'Update Job';
-                document.querySelector('button[type="submit"]').setAttribute('data-i18n', 'btn_update_job');
+                const h2 = document.querySelector('.topbar-welcome h2');
+                h2.setAttribute('data-i18n', 'edit_job_title');
+                h2.textContent = window.i18n ? window.i18n.t('edit_job_title') : 'Edit Job';
+                const submitBtn = document.querySelector('button[type="submit"]');
+                submitBtn.setAttribute('data-i18n', 'btn_update_job');
+                submitBtn.textContent = window.i18n ? window.i18n.t('btn_update_job') : 'Update Job';
             } else {
-                UI.showToast('You do not have permission to edit this job', 'error');
+                UI.showToast(window.i18n ? window.i18n.t('toast_no_permission') : 'You do not have permission to edit this job.', 'error');
                 window.location.href = 'company-jobs.html';
             }
         }
@@ -235,37 +237,26 @@
 
             if (editJobId) {
                 if (Storage.updateJob(editJobId, jobData)) {
-                    UI.showToast('Job updated successfully', 'success');
+                    UI.showToast(window.i18n ? window.i18n.t('toast_job_updated') : 'Job updated successfully!', 'success');
                     setTimeout(() => {
                         window.location.href = 'company-jobs.html';
                     }, 1500);
                 } else {
-                    UI.showToast('Failed to update job', 'error');
+                    UI.showToast(window.i18n ? window.i18n.t('toast_job_update_fail') : 'Failed to update job.', 'error');
                 }
             } else {
                 if (Storage.saveJob(jobData)) {
-                    UI.showToast('Job posted successfully', 'success');
+                    UI.showToast(window.i18n ? window.i18n.t('toast_job_posted') : 'Job posted successfully!', 'success');
                     setTimeout(() => {
                         window.location.href = 'company-jobs.html';
                     }, 1500);
                 } else {
-                    UI.showToast('Failed to post job', 'error');
+                    UI.showToast(window.i18n ? window.i18n.t('toast_job_post_fail') : 'Failed to post job.', 'error');
                 }
             }
         });
 
-        // Language Selector
-        const langButtons = document.querySelectorAll('.lang-btn');
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const lang = e.target.getAttribute('data-lang');
-                if (window.i18n) {
-                    window.i18n.setLanguage(lang);
-                    langButtons.forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                }
-            });
-        });
+        // lang-btn listeners are handled centrally by i18n.js attachLanguageListeners()
     </script>
 </body>
 

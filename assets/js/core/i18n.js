@@ -36,7 +36,13 @@ const i18n = {
             step3_title: 'Get Hired',
             step3_desc: 'Apply with one click and start your remote career journey',
 
-            // ── Index – Stats ─────────────────────────────────
+            // ── Index – Stats (Public Landing Page) ───────────
+            stat_remote_positions: 'Remote Positions',
+            stat_global_companies: 'Global Companies',
+            stat_active_professionals: 'Active Professionals',
+            stat_success_rate: 'Success Rate',
+
+            // ── Index – Platform Stats Section ────────────────
             stats_title: 'Platform',
             stats_highlight: 'Statistics',
             stats_jobs: 'Total Jobs',
@@ -72,6 +78,11 @@ const i18n = {
             footer_for_companies: 'For Companies',
             footer_resources: 'Resources',
             footer_rights: 'All rights reserved.',
+            footer_dashboard: 'Dashboard',
+            footer_careers: 'Careers',
+            footer_privacy: 'Privacy Policy',
+            footer_terms: 'Terms of Service',
+            footer_cookies: 'Cookie Policy',
 
             // ── Jobs Page ─────────────────────────────────────
             jobs_hero_title: 'Elite Remote Opportunities',
@@ -118,6 +129,12 @@ const i18n = {
             form_resume: 'Resume / CV Link',
             form_cover_letter: 'Cover Letter',
             btn_submit: 'Submit Application',
+            not_specified: 'Not specified',
+            recently_posted: 'Recently',
+            submitting: 'Submitting...',
+            application_submitted: 'Application submitted successfully!',
+            required_skills: 'Required Skills',
+            company_setup_msg: 'Setting up your company dashboard...',
 
             // ── About Page ────────────────────────────────────
             about_hero_title: 'Redefining',
@@ -166,6 +183,11 @@ const i18n = {
             faq_a3: 'Response times vary by company, but most employers review applications within 5-7 business days.',
             faq_q4: 'Can I apply to multiple positions?',
             faq_a4: 'Absolutely! You can apply to as many positions as you like. We recommend tailoring your application for each role.',
+            placeholder_name: 'John Doe',
+            placeholder_email: 'john@example.com',
+            placeholder_subject: 'How can we help?',
+            placeholder_message: 'Tell us more about your inquiry...',
+            toast_msg_sent: "Message sent! We'll get back to you soon.",
 
             // ── Common ────────────────────────────────────────
             full_remote: 'Full Remote',
@@ -177,6 +199,8 @@ const i18n = {
             filter_location: 'Location',
             filter_category: 'Category',
             filter_type: 'Type',
+            select_preference: 'Select preference',
+            flexible: 'Flexible',
 
             // ── Company Dashboard Sidebar ─────────────────────
             nav_overview: 'Overview',
@@ -185,6 +209,8 @@ const i18n = {
             nav_company_profile: 'Company Profile',
             nav_logout: 'Logout',
             search_placeholder: 'Search...',
+            search_jobs_placeholder: 'Search jobs, companies...',
+            search_apps_placeholder: 'Search applications...',
 
             // ── Company Dashboard – Main ──────────────────────
             company_dash_title: 'Company Dashboard',
@@ -228,6 +254,11 @@ const i18n = {
             btn_post_job: 'Post Job',
             btn_update_job: 'Update Job',
             btn_post_new_job: 'Post New Job',
+            toast_job_posted: 'Job posted successfully!',
+            toast_job_updated: 'Job updated successfully!',
+            toast_job_post_fail: 'Failed to post job.',
+            toast_job_update_fail: 'Failed to update job.',
+            toast_no_permission: 'You do not have permission to edit this job.',
 
             // ── Manage Jobs Page ──────────────────────────────
             manage_jobs_title: 'Manage Jobs',
@@ -264,6 +295,10 @@ const i18n = {
             dash_company: 'Company',
             dash_applied: 'Applied Date',
             dash_status: 'Status',
+            stat_this_week: '+3 this week',
+            stat_new: '+2 new',
+            stat_unread: '3 unread',
+            stat_this_month: '+15 this month',
 
             // ── Applications Page ─────────────────────────────
             apps_subtitle: 'Track your job applications and their status',
@@ -280,6 +315,8 @@ const i18n = {
             sort_company: 'Company A-Z',
             applications: 'applications',
             view_details: 'View Details',
+            applied_n_days_ago: 'Applied 5 days ago',
+            applied_n_weeks_ago: 'Applied 1 week ago',
 
             // ── Dashboard Jobs Page ───────────────────────────
             dash_jobs_title: 'Remote Job Opportunities',
@@ -305,7 +342,37 @@ const i18n = {
             form_remote_pref: 'Remote Work Preference',
             form_skills: 'Skills (comma separated)',
             form_about: 'About Me',
-            btn_save_changes: 'Save Changes'
+            btn_save_changes: 'Save Changes',
+
+            // ── Login / Auth ──────────────────────────────────
+            // ── Common Actions ────────────────────────────────
+            confirm_action: 'Confirm Action',
+            btn_confirm: 'Confirm',
+
+            // ── Profile Update ────────────────────────────────
+            toast_profile_updated: 'Profile updated successfully!',
+            toast_profile_fail: 'Failed to update profile.',
+
+            login_title: 'Sign In',
+            login_subtitle: 'Secure access to your workspace',
+            login_email_label: 'Email Address',
+            login_password_label: 'Password',
+            login_remember_me: 'Remember me',
+            login_placeholder_email: 'example@gmail.com',
+            login_placeholder_password: 'Enter your password',
+            login_btn: 'Sign In',
+            demo_credentials: 'Demo Credentials',
+            demo_email_label: 'Email',
+            demo_password_label: 'Password',
+            no_account: "Don't have an account?",
+            create_account: 'Create one now',
+            are_you_company: 'Are you a company?',
+            company_login: 'Company Login',
+            back_home: '← Back to Home',
+            welcome_back: 'Welcome Back!',
+            redirecting_dashboard: 'Redirecting to your dashboard...',
+            register_terms: 'I agree to the Terms of Service and Privacy Policy',
+            passwords_no_match: 'Passwords do not match'
         },
 
         fr: {
@@ -336,7 +403,13 @@ const i18n = {
             step3_title: 'Soyez Embauché',
             step3_desc: 'Postulez en un clic et commencez votre parcours professionnel à distance',
 
-            // ── Index – Stats ─────────────────────────────────
+            // ── Index – Stats (Public Landing Page) ───────────
+            stat_remote_positions: 'Postes à Distance',
+            stat_global_companies: 'Entreprises Mondiales',
+            stat_active_professionals: 'Professionnels Actifs',
+            stat_success_rate: 'Taux de Réussite',
+
+            // ── Index – Platform Stats Section ────────────────
             stats_title: 'Statistiques',
             stats_highlight: 'Plateforme',
             stats_jobs: 'Total Emplois',
@@ -372,6 +445,11 @@ const i18n = {
             footer_for_companies: 'Pour Entreprises',
             footer_resources: 'Ressources',
             footer_rights: 'Tous droits réservés.',
+            footer_dashboard: 'Tableau de bord',
+            footer_careers: 'Carrières',
+            footer_privacy: 'Politique de confidentialité',
+            footer_terms: "Conditions d'utilisation",
+            footer_cookies: 'Politique des cookies',
 
             // ── Jobs Page ─────────────────────────────────────
             jobs_hero_title: 'Opportunités Élite à Distance',
@@ -418,6 +496,12 @@ const i18n = {
             form_resume: 'Lien CV / Portfolio',
             form_cover_letter: 'Lettre de Motivation',
             btn_submit: 'Soumettre la Candidature',
+            not_specified: 'Non spécifié',
+            recently_posted: 'Récemment',
+            submitting: 'Envoi en cours...',
+            application_submitted: 'Candidature soumise avec succès !',
+            required_skills: 'Compétences Requises',
+            company_setup_msg: 'Configuration de votre tableau de bord entreprise...',
 
             // ── About Page ────────────────────────────────────
             about_hero_title: 'Redéfinir le',
@@ -429,12 +513,12 @@ const i18n = {
             about_values_title: 'Nos',
             about_values_highlight: 'Valeurs',
             about_values_subtitle: 'Les principes qui guident tout ce que nous faisons',
-            val_people: 'Les Personnes d\'Abord',
+            val_people: "Les Personnes d'Abord",
             val_people_desc: 'Nous privilégions le succès et le bien-être des professionnels comme des employeurs au sein de notre communauté.',
             val_innovation: 'Innovation',
-            val_innovation_desc: 'Nous faisons évoluer continuellement notre plateforme pour répondre aux besoins changeants de la main-d\'œuvre moderne.',
+            val_innovation_desc: "Nous faisons évoluer continuellement notre plateforme pour répondre aux besoins changeants de la main-d'œuvre moderne.",
             val_trust: 'Confiance',
-            val_trust_desc: 'Nous maintenons les plus hauts standards d\'intégrité et de transparence dans toutes nos interactions.',
+            val_trust_desc: "Nous maintenons les plus hauts standards d'intégrité et de transparence dans toutes nos interactions.",
             about_cta_title: 'Prêt à Commencer Votre Parcours à Distance ?',
             about_cta_subtitle: "Rejoignez des milliers de professionnels qui ont trouvé leur poste de rêve en télétravail via Télétravail.",
             btn_get_started: 'Commencer',
@@ -459,13 +543,18 @@ const i18n = {
             faq_highlight: 'Fréquentes',
             faq_subtitle: 'Réponses rapides aux questions courantes',
             faq_q1: 'Comment créer un compte ?',
-            faq_a1: 'Cliquez simplement sur « Rejoindre » et remplissez le formulaire d\'inscription. Cela prend moins de 2 minutes.',
+            faq_a1: "Cliquez simplement sur « Rejoindre » et remplissez le formulaire d'inscription. Cela prend moins de 2 minutes.",
             faq_q2: 'Télétravail est-il gratuit ?',
-            faq_a2: 'Oui ! La création d\'un compte et la navigation parmi les offres sont totalement gratuites pour les professionnels. Nous ne facturons que les entreprises pour la publication d\'offres.',
-            faq_q3: 'Combien de temps pour recevoir une réponse d\'une entreprise ?',
+            faq_a2: "Oui ! La création d'un compte et la navigation parmi les offres sont totalement gratuites pour les professionnels. Nous ne facturons que les entreprises pour la publication d'offres.",
+            faq_q3: "Combien de temps pour recevoir une réponse d'une entreprise ?",
             faq_a3: 'Les délais varient selon les entreprises, mais la plupart des employeurs examinent les candidatures sous 5 à 7 jours ouvrables.',
             faq_q4: 'Puis-je postuler à plusieurs postes ?',
-            faq_a4: 'Absolument ! Vous pouvez postuler à autant de postes que vous le souhaitez. Nous recommandons d\'adapter votre candidature pour chaque poste.',
+            faq_a4: "Absolument ! Vous pouvez postuler à autant de postes que vous le souhaitez. Nous recommandons d'adapter votre candidature pour chaque poste.",
+            placeholder_name: 'Jean Dupont',
+            placeholder_email: 'jean@example.com',
+            placeholder_subject: 'Comment pouvons-nous vous aider ?',
+            placeholder_message: "Dites-nous en plus sur votre demande...",
+            toast_msg_sent: "Message envoyé ! Nous vous répondrons bientôt.",
 
             // ── Common ────────────────────────────────────────
             full_remote: 'Télétravail Complet',
@@ -477,6 +566,8 @@ const i18n = {
             filter_location: 'Lieu',
             filter_category: 'Catégorie',
             filter_type: 'Type',
+            select_preference: 'Sélectionner une préférence',
+            flexible: 'Flexible',
 
             // ── Company Dashboard Sidebar ─────────────────────
             nav_overview: 'Tableau de bord',
@@ -485,6 +576,8 @@ const i18n = {
             nav_company_profile: 'Profil entreprise',
             nav_logout: 'Déconnexion',
             search_placeholder: 'Rechercher...',
+            search_jobs_placeholder: 'Rechercher emplois, entreprises...',
+            search_apps_placeholder: 'Rechercher candidatures...',
 
             // ── Company Dashboard – Main ──────────────────────
             company_dash_title: 'Tableau de bord Entreprise',
@@ -528,6 +621,11 @@ const i18n = {
             btn_post_job: "Publier l'offre",
             btn_update_job: 'Mettre à jour',
             btn_post_new_job: 'Nouvelle offre',
+            toast_job_posted: 'Offre publiée avec succès !',
+            toast_job_updated: 'Offre mise à jour avec succès !',
+            toast_job_post_fail: "Échec de la publication de l'offre.",
+            toast_job_update_fail: "Échec de la mise à jour de l'offre.",
+            toast_no_permission: "Vous n'avez pas la permission de modifier cette offre.",
 
             // ── Manage Jobs Page ──────────────────────────────
             manage_jobs_title: 'Gérer les offres',
@@ -564,11 +662,15 @@ const i18n = {
             dash_company: 'Entreprise',
             dash_applied: 'Date de candidature',
             dash_status: 'Statut',
+            stat_this_week: '+3 cette semaine',
+            stat_new: '+2 nouveaux',
+            stat_unread: '3 non lus',
+            stat_this_month: '+15 ce mois',
 
             // ── Applications Page ─────────────────────────────
             apps_subtitle: 'Suivez vos candidatures et leur statut',
             no_apps_title: "Vous n'avez pas encore postulé.",
-            no_apps_desc: 'Commencez à explorer les opportunités à distance aujourd’hui.',
+            no_apps_desc: "Commencez à explorer les opportunités à distance aujourd'hui.",
             browse_jobs: 'Parcourir les emplois',
             filter_all_status: 'Tous les statuts',
             status_pending: 'En attente',
@@ -580,9 +682,11 @@ const i18n = {
             sort_company: 'Entreprise A-Z',
             applications: 'candidatures',
             view_details: 'Voir détails',
+            applied_n_days_ago: 'Postulé il y a 5 jours',
+            applied_n_weeks_ago: 'Postulé il y a 1 semaine',
 
             // ── Dashboard Jobs Page ───────────────────────────
-            dash_jobs_title: 'Opportunités d’emploi à distance',
+            dash_jobs_title: "Opportunités d'emploi à distance",
             dash_jobs_subtitle: 'Découvrez votre prochaine étape de carrière',
             filter_all_categories: 'Toutes catégories',
             cat_development: 'Développement',
@@ -605,7 +709,37 @@ const i18n = {
             form_remote_pref: 'Préférence de télétravail',
             form_skills: 'Compétences (séparées par virgule)',
             form_about: 'À propos de moi',
-            btn_save_changes: 'Enregistrer'
+            btn_save_changes: 'Enregistrer',
+
+            // ── Common Actions ────────────────────────────────
+            confirm_action: 'Confirmer l\'action',
+            btn_confirm: 'Confirmer',
+
+            // ── Profile Update ────────────────────────────────
+            toast_profile_updated: 'Profil mis à jour avec succès !',
+            toast_profile_fail: 'Échec de la mise à jour du profil.',
+
+            // ── Login / Auth ──────────────────────────────────
+            login_title: 'Connexion',
+            login_subtitle: 'Accès sécurisé à votre espace de travail',
+            login_email_label: 'Adresse Email',
+            login_password_label: 'Mot de passe',
+            login_remember_me: 'Se souvenir de moi',
+            login_placeholder_email: 'exemple@gmail.com',
+            login_placeholder_password: 'Entrez votre mot de passe',
+            login_btn: 'Se connecter',
+            demo_credentials: 'Identifiants de démonstration',
+            demo_email_label: 'Email',
+            demo_password_label: 'Mot de passe',
+            no_account: "Vous n'avez pas de compte ?",
+            create_account: 'Créer un compte',
+            are_you_company: 'Vous êtes une entreprise ?',
+            company_login: 'Connexion Entreprise',
+            back_home: '← Retour à l\'accueil',
+            welcome_back: 'Bon retour !',
+            redirecting_dashboard: 'Redirection vers votre tableau de bord...',
+            register_terms: "J'accepte les Conditions d'utilisation et la Politique de confidentialité",
+            passwords_no_match: 'Les mots de passe ne correspondent pas'
         }
     },
 
@@ -632,7 +766,9 @@ const i18n = {
     },
 
     /**
-     * Re-render all elements that carry a data-i18n or data-i18n-placeholder attribute.
+     * Re-render all elements that carry a data-i18n,
+     * data-i18n-placeholder, or data-i18n-title attribute.
+     * Also handles <option> elements inside <select>.
      */
     updatePage() {
         // Text content
@@ -645,6 +781,18 @@ const i18n = {
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
             el.placeholder = this.t(key);
+        });
+
+        // Title attribute (tooltips etc.)
+        document.querySelectorAll('[data-i18n-title]').forEach(el => {
+            const key = el.getAttribute('data-i18n-title');
+            el.title = this.t(key);
+        });
+
+        // <option> elements inside <select> — update their text content
+        document.querySelectorAll('select option[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            el.textContent = this.t(key);
         });
 
         // Emit a custom event so dynamic renderers (JobsRenderer, etc.) can react

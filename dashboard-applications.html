@@ -83,7 +83,7 @@
             color: var(--text-light);
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
             min-width: 150px;
         }
 
@@ -99,7 +99,7 @@
             border-radius: var(--radius-lg);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-md);
-            transition: all var(--transition-normal);
+            transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
         }
 
         .application-card:hover {
@@ -254,13 +254,19 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
+                        <a href="dashboard-jobs.html" class="sidebar-menu-link">
+                            <span class="sidebar-menu-icon"><i class="fas fa-briefcase"></i></span>
+                            <span data-i18n="nav_remote_jobs">Remote Jobs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
                         <a href="profile.html" class="sidebar-menu-link">
                             <span class="sidebar-menu-icon"><i class="fas fa-user"></i></span>
                             <span data-i18n="nav_profile">Profile</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link" onclick="Auth.logout()">
+                        <a href="#" class="sidebar-menu-link" onclick="if(window.Auth) Auth.logout(); return false;">
                             <span class="sidebar-menu-icon"><i class="fas fa-sign-out-alt"></i></span>
                             <span data-i18n="nav_logout">Logout</span>
                         </a>
@@ -303,7 +309,8 @@
 
                     <div class="topbar-search">
                         <i class="fas fa-search topbar-search-icon"></i>
-                        <input type="text" placeholder="Search applications...">
+                        <input type="text" placeholder="Search applications..."
+                            data-i18n-placeholder="search_apps_placeholder">
                     </div>
                     <div class="topbar-notifications">
                         <i class="fas fa-bell"></i>
@@ -369,9 +376,10 @@
                                         <div class="application-meta">
                                             <div class="application-date">
                                                 <i class="fas fa-calendar"></i>
-                                                <span>Applied 5 days ago</span>
+                                                <span data-i18n="applied_n_days_ago">Applied 5 days ago</span>
                                             </div>
-                                            <span class="status-badge status-interview">Interview</span>
+                                            <span class="status-badge status-interview"
+                                                data-i18n="status_interview">Interview</span>
                                         </div>
                                     </div>
                                 </div>
@@ -386,7 +394,7 @@
                                     <button class="btn btn-ghost" style="padding: 0.5rem 1rem;">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                    <a href="job-details.html?id=1" class="btn btn-primary"
+                                    <a href="job-details.html?id=dev-001" class="btn btn-primary"
                                         style="padding: 0.5rem 1.5rem;" data-i18n="view_details">View Details</a>
                                 </div>
                             </div>
@@ -403,9 +411,10 @@
                                         <div class="application-meta">
                                             <div class="application-date">
                                                 <i class="fas fa-calendar"></i>
-                                                <span>Applied 1 week ago</span>
+                                                <span data-i18n="applied_n_weeks_ago">Applied 1 week ago</span>
                                             </div>
-                                            <span class="status-badge status-pending">Pending</span>
+                                            <span class="status-badge status-pending"
+                                                data-i18n="status_pending">Pending</span>
                                         </div>
                                     </div>
                                 </div>
@@ -420,7 +429,7 @@
                                     <button class="btn btn-ghost" style="padding: 0.5rem 1rem;">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                    <a href="job-details.html?id=2" class="btn btn-primary"
+                                    <a href="job-details.html?id=des-001" class="btn btn-primary"
                                         style="padding: 0.5rem 1.5rem;" data-i18n="view_details">View Details</a>
                                 </div>
                             </div>
@@ -475,19 +484,7 @@
 
             document.getElementById('emptyState').style.display = 'none';
             document.getElementById('applicationsList').style.display = 'block';
-
-            // Language Selector
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const lang = e.target.getAttribute('data-lang');
-                    if (window.i18n) {
-                        window.i18n.setLanguage(lang);
-                        langButtons.forEach(b => b.classList.remove('active'));
-                        e.target.classList.add('active');
-                    }
-                });
-            });
+            // lang-btn listeners are handled centrally by i18n.js attachLanguageListeners()
         });
     </script>
 </body>
