@@ -51,15 +51,16 @@ const i18n = {
             stats_users: 'Active Users',
 
             // ── Index – For Companies ─────────────────────────
-            companies_title: 'For Companies',
-            companies_subtitle: 'Find and hire top remote talent from around the world',
-            companies_talent_title: 'Access Top Talent',
-            companies_talent_desc: 'Connect with skilled professionals from around the globe ready to work remotely.',
-            companies_hiring_title: 'Quick Hiring',
-            companies_hiring_desc: 'Post jobs in minutes and start receiving applications from qualified candidates.',
-            companies_grow_title: 'Grow Your Team',
-            companies_grow_desc: 'Build a world-class remote team without geographical limitations.',
-            companies_btn: 'Hire Talent',
+            companies_title: 'Built for',
+            companies_title_highlight: 'Ambitious Teams',
+            companies_subtitle: 'Post jobs, review applicants, and hire exceptional remote talent — all in one place',
+            companies_talent_title: 'Reach Top Talent',
+            companies_talent_desc: 'Get in front of thousands of skilled, vetted professionals actively seeking remote roles.',
+            companies_hiring_title: 'Hire Faster',
+            companies_hiring_desc: 'Publish a job in under 5 minutes and start receiving applications from qualified candidates the same day.',
+            companies_grow_title: 'Scale Without Limits',
+            companies_grow_desc: 'Build high-performing remote teams and expand your business across borders — no office required.',
+            companies_btn: 'Post Your First Job',
 
             // ── Index – Team ──────────────────────────────────
             team_title: 'Meet The',
@@ -152,10 +153,10 @@ const i18n = {
             val_innovation_desc: 'We continuously evolve our platform to meet the changing needs of the modern workforce.',
             val_trust: 'Trust',
             val_trust_desc: 'We maintain the highest standards of integrity and transparency in all our interactions.',
-            about_cta_title: 'Ready to Start Your Remote Journey?',
-            about_cta_subtitle: 'Join thousands of professionals who have found their dream remote positions through Télétravail.',
-            btn_get_started: 'Get Started',
-            btn_browse_jobs: 'Browse Jobs',
+            about_cta_title: 'Ready to Land Your Next Remote Role?',
+            about_cta_subtitle: 'Join a growing community of professionals who found meaningful, flexible careers through Télétravail.',
+            btn_get_started: 'Create Free Account',
+            btn_browse_jobs: 'Explore Jobs',
 
             // ── Contact Page ──────────────────────────────────
             contact_hero_title: 'Get In',
@@ -345,6 +346,42 @@ const i18n = {
             btn_save_changes: 'Save Changes',
 
             // ── Login / Auth ──────────────────────────────────
+            // ── Company Login / Register ──────────────────────
+            company_portal: 'Company Portal',
+            access_hiring_hub: 'Access Your Hiring Hub',
+            manage_jobs_subtitle: 'Manage job postings and find top remote talent',
+            form_company_email: 'Business Email',
+            form_password: 'Password',
+            remember_me: 'Keep me signed in',
+            btn_access_dashboard: 'Sign In',
+            email: 'Email',
+            password: 'Password',
+            register_company: 'Register your company',
+            looking_for_job: 'Looking for a job?',
+            user_login: 'Candidate Login',
+            company_reg: 'Company Registration',
+            company_join_title: 'Start Hiring Top Remote Talent',
+            company_join_subtitle: 'Join the leading remote work platform and connect with exceptional candidates worldwide',
+            upload_logo: 'Click to upload your company logo (optional)',
+            agree_terms: 'I agree to the Terms of Service and Privacy Policy',
+            btn_create_account: 'Create Company Account',
+            already_account: 'Already have an account?',
+            register_subtitle: 'Begin your remote work journey today',
+
+            // ── Profile Page ─────────────────────────────────
+            form_location: 'Location',
+            form_job_title: 'Current Job Title',
+
+            // ── Dynamic JS Content ────────────────────────────
+            competitive: 'Competitive',
+            loading_opportunities: 'Loading opportunities…',
+            oops: 'Something went wrong',
+            refresh_page: 'Refresh Page',
+            error_try_again: 'An error occurred. Please try again.',
+            no_jobs_found: 'No jobs found',
+            adjust_filters: 'Try adjusting your search filters',
+            job_unavailable: 'Job data is currently unavailable.',
+
             // ── Common Actions ────────────────────────────────
             confirm_action: 'Confirm Action',
             btn_confirm: 'Confirm',
@@ -353,12 +390,12 @@ const i18n = {
             toast_profile_updated: 'Profile updated successfully!',
             toast_profile_fail: 'Failed to update profile.',
 
-            login_title: 'Sign In',
-            login_subtitle: 'Secure access to your workspace',
+            login_title: 'Welcome Back',
+            login_subtitle: 'Sign in to access your remote work dashboard',
             login_email_label: 'Email Address',
             login_password_label: 'Password',
-            login_remember_me: 'Remember me',
-            login_placeholder_email: 'example@gmail.com',
+            login_remember_me: 'Keep me signed in',
+            login_placeholder_email: 'your@email.com',
             login_placeholder_password: 'Enter your password',
             login_btn: 'Sign In',
             demo_credentials: 'Demo Credentials',
@@ -418,15 +455,16 @@ const i18n = {
             stats_users: 'Utilisateurs Actifs',
 
             // ── Index – For Companies ─────────────────────────
-            companies_title: 'Pour Entreprises',
-            companies_subtitle: 'Trouvez et recrutez les meilleurs talents à distance du monde entier',
-            companies_talent_title: 'Accédez aux Meilleurs Talents',
-            companies_talent_desc: 'Connectez-vous avec des professionnels qualifiés du monde entier prêts à travailler à distance.',
-            companies_hiring_title: 'Recrutement Rapide',
-            companies_hiring_desc: 'Publiez des offres en quelques minutes et commencez à recevoir des candidatures de candidats qualifiés.',
-            companies_grow_title: 'Développez Votre Équipe',
-            companies_grow_desc: "Constituez une équipe à distance de classe mondiale sans limitations géographiques.",
-            companies_btn: 'Recruter des Talents',
+            companies_title: 'Conçu pour',
+            companies_title_highlight: 'les Équipes Ambitieuses',
+            companies_subtitle: 'Publiez des offres, évaluez les candidats et recrutez les meilleurs talents à distance — tout en un seul endroit',
+            companies_talent_title: 'Atteignez les Meilleurs Talents',
+            companies_talent_desc: 'Accédez à des milliers de professionnels qualifiés en recherche active de postes à distance.',
+            companies_hiring_title: 'Recrutez Plus Vite',
+            companies_hiring_desc: 'Publiez une offre en moins de 5 minutes et recevez des candidatures de qualité dès le même jour.',
+            companies_grow_title: 'Scalez Sans Limites',
+            companies_grow_desc: 'Constituez des équipes à distance performantes et développez votre activité au-delà des frontières.',
+            companies_btn: 'Publiez Votre Première Offre',
 
             // ── Index – Team ──────────────────────────────────
             team_title: 'Rencontrez',
@@ -711,6 +749,42 @@ const i18n = {
             form_about: 'À propos de moi',
             btn_save_changes: 'Enregistrer',
 
+            // ── Company Login / Register ──────────────────────
+            company_portal: 'Espace Entreprise',
+            access_hiring_hub: 'Accédez à Votre Espace de Recrutement',
+            manage_jobs_subtitle: 'Gérez vos offres et trouvez les meilleurs talents à distance',
+            form_company_email: 'Email Professionnel',
+            form_password: 'Mot de passe',
+            remember_me: 'Rester connecté',
+            btn_access_dashboard: 'Se connecter',
+            email: 'Email',
+            password: 'Mot de passe',
+            register_company: 'Inscrire votre entreprise',
+            looking_for_job: 'Vous cherchez un emploi ?',
+            user_login: 'Connexion Candidat',
+            company_reg: 'Inscription Entreprise',
+            company_join_title: 'Recrutez les Meilleurs Talents à Distance',
+            company_join_subtitle: 'Rejoignez la plateforme de référence du télétravail et connectez-vous avec des candidats exceptionnels',
+            upload_logo: 'Cliquez pour ajouter votre logo (optionnel)',
+            agree_terms: "J'accepte les Conditions d'utilisation et la Politique de confidentialité",
+            btn_create_account: 'Créer un compte entreprise',
+            already_account: 'Vous avez déjà un compte ?',
+            register_subtitle: 'Démarrez votre parcours de télétravail dès aujourd\'hui',
+
+            // ── Profile Page ─────────────────────────────────
+            form_location: 'Localisation',
+            form_job_title: 'Intitulé du poste actuel',
+
+            // ── Dynamic JS Content ────────────────────────────
+            competitive: 'Compétitif',
+            loading_opportunities: 'Chargement des opportunités…',
+            oops: 'Une erreur est survenue',
+            refresh_page: 'Actualiser la page',
+            error_try_again: 'Une erreur est survenue. Veuillez réessayer.',
+            no_jobs_found: 'Aucun emploi trouvé',
+            adjust_filters: 'Essayez de modifier vos filtres',
+            job_unavailable: 'Les données emplois sont temporairement indisponibles.',
+
             // ── Common Actions ────────────────────────────────
             confirm_action: 'Confirmer l\'action',
             btn_confirm: 'Confirmer',
@@ -720,12 +794,12 @@ const i18n = {
             toast_profile_fail: 'Échec de la mise à jour du profil.',
 
             // ── Login / Auth ──────────────────────────────────
-            login_title: 'Connexion',
-            login_subtitle: 'Accès sécurisé à votre espace de travail',
-            login_email_label: 'Adresse Email',
+            login_title: 'Bon Retour',
+            login_subtitle: 'Connectez-vous pour accéder à votre espace de télétravail',
+            login_email_label: 'Adresse e-mail',
             login_password_label: 'Mot de passe',
-            login_remember_me: 'Se souvenir de moi',
-            login_placeholder_email: 'exemple@gmail.com',
+            login_remember_me: 'Rester connecté',
+            login_placeholder_email: 'votre@email.com',
             login_placeholder_password: 'Entrez votre mot de passe',
             login_btn: 'Se connecter',
             demo_credentials: 'Identifiants de démonstration',

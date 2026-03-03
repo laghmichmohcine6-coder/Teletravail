@@ -234,8 +234,8 @@ function renderJobs(category = 'all') {
       </p>
       
       <div style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
-        <span style="color: var(--gold-accent); font-weight: 600; font-size: 1.125rem;">${job.salary || 'Competitive'}</span>
-        <a href="job-details.html?id=${job.id}" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Apply Now</a>
+        <span style="color: var(--gold-accent); font-weight: 600; font-size: 1.125rem;">${job.salary || (window.i18n ? window.i18n.t('competitive') : 'Competitive')}</span>
+        <a href="job-details.html?id=${job.id}" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">${window.i18n ? window.i18n.t('apply_now') : 'Apply Now'}</a>
       </div>
     </div>
   `).join('');
@@ -245,6 +245,14 @@ function renderJobs(category = 'all') {
     window.ScrollReveal.observe();
   }
 }
+
+// Re-render home page job cards when language switches
+document.addEventListener('languageChanged', () => {
+  if (document.querySelector('.jobs-grid')) {
+    renderJobs(state.currentCategory || 'all');
+  }
+});
+
 
 
 

@@ -471,7 +471,7 @@
 
                 // Guard: JobsData must be available
                 if (!window.JobsData) {
-                    grid.innerHTML = '<div class="dash-jobs-empty"><i class="fas fa-exclamation-circle"></i><p>Job data unavailable.</p></div>';
+                    grid.innerHTML = `<div class="dash-jobs-empty"><i class="fas fa-exclamation-circle"></i><p>${t('job_unavailable')}</p></div>`;
                     return;
                 }
 
@@ -503,10 +503,12 @@
                 grid.innerHTML = '';
 
                 if (jobs.length === 0) {
+                    const noJobsMsg = t('no_jobs_found');
+                    const adjustMsg = t('adjust_filters');
                     grid.innerHTML = `<div class="dash-jobs-empty">
                         <i class="fas fa-search"></i>
-                        <p style="font-size:1.1rem; color: var(--text-light); margin-bottom:0.5rem;">No jobs found</p>
-                        <p>Try adjusting your filters</p>
+                        <p style="font-size:1.1rem; color: var(--text-light); margin-bottom:0.5rem;">${noJobsMsg}</p>
+                        <p>${adjustMsg}</p>
                     </div>`;
                     return;
                 }

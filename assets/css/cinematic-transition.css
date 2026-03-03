@@ -1,0 +1,195 @@
+/*
+ * ══════════════════════════════════════════════════════════════════
+ *  Télétravail — Cinematic Page Transition  (2026 Edition)
+ *  intro.html → index.html
+ * ──────────────────────────────────────────────────────────────────
+ *  Layer stack (z-index order):
+ *    #ct-overlay      99998  glass morphism dark veil
+ *    #ct-sweep        99999  light sweep pass
+ *
+ *  Toggle kill-switch:
+ *    Set  window.CINEMATIC_TRANSITION_DISABLED = true;
+ *    before this script runs to skip all animations instantly.
+ * ══════════════════════════════════════════════════════════════════
+ */
+
+/* ── GLOBAL EASE TOKEN ─────────────────────────────────────────── */
+:root {
+    --ct-ease: cubic-bezier(0.76, 0, 0.24, 1);
+    --ct-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ct-ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+    --ct-dur-blur-out: 700ms;
+    /* blur ramps up on intro exit */
+    --ct-dur-overlay: 600ms;
+    /* dark glass fades in         */
+    --ct-dur-sweep: 800ms;
+    /* light sweep crosses screen  */
+    --ct-dur-reveal: 900ms;
+    /* index content reveals       */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. DARK GLASS OVERLAY
+   Appears over intro just before navigation, persists into index
+   ═══════════════════════════════════════════════════════════════ */
+#ct-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    pointer-events: none;
+    opacity: 0;
+
+    /* glass morphism dark veil */
+    background: linear-gradient(160deg,
+            rgba(4, 4, 6, 0.97) 0%,
+            rgba(8, 6, 14, 0.96) 50%,
+            rgba(4, 4, 6, 0.97) 100%);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    will-change: opacity, backdrop-filter;
+    backface-visibility: hidden;
+}
+
+/* ── State: overlay fading IN (exit phase on intro.html) ── */
+#ct-overlay.ct-fade-in {
+    pointer-events: all;
+    transition:
+        opacity var(--ct-dur-overlay) var(--ct-ease-in),
+        backdrop-filter var(--ct-dur-blur-out) var(--ct-ease-in),
+        -webkit-backdrop-filter var(--ct-dur-blur-out) var(--ct-ease-in);
+    opacity: 1;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+/* ── State: overlay fading OUT (enter phase on index.html) ── */
+#ct-overlay.ct-fade-out {
+    pointer-events: none;
+    transition:
+        opacity var(--ct-dur-reveal) var(--ct-ease-out),
+        backdrop-filter var(--ct-dur-reveal) var(--ct-ease-out),
+        -webkit-backdrop-filter var(--ct-dur-reveal) var(--ct-ease-out);
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. LIGHT SWEEP (single pass, very subtle)
+   A thin, angled luminous streak crosses the screen once.
+   ═══════════════════════════════════════════════════════════════ */
+#ct-sweep {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden;
+    will-change: opacity;
+}
+
+#ct-sweep::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -60%;
+    width: 40%;
+    height: 140%;
+    background: linear-gradient(105deg,
+            transparent 0%,
+            rgba(245, 232, 176, 0.04) 30%,
+            rgba(245, 232, 176, 0.09) 50%,
+            rgba(245, 232, 176, 0.04) 70%,
+            transparent 100%);
+    transform: skewX(-12deg);
+    will-change: transform;
+}
+
+/* ── Sweep active → streak flies across ── */
+#ct-sweep.ct-sweep-active {
+    opacity: 1;
+}
+
+#ct-sweep.ct-sweep-active::after {
+    animation: ctSweepPass var(--ct-dur-sweep) var(--ct-ease-out) forwards;
+}
+
+@keyframes ctSweepPass {
+    0% {
+        transform: translateX(0) skewX(-12deg);
+    }
+
+    100% {
+        transform: translateX(300%) skewX(-12deg);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. INTRO SCENE — blur + zoom depth on exit
+   Applied to #intro-scene via JS class
+   ═══════════════════════════════════════════════════════════════ */
+#intro-scene.ct-exit-blur {
+    transition:
+        filter var(--ct-dur-blur-out) var(--ct-ease-in),
+        transform var(--ct-dur-blur-out) var(--ct-ease-in);
+    filter: blur(14px);
+    transform: scale(1.07);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. INDEX.HTML — cinematic entrance
+   body gets .ct-entering on load; removed after reveal completes
+   ═══════════════════════════════════════════════════════════════ */
+
+/*
+ * When arriving from intro we lock the body so overlay stays crisp.
+ * class ct-entering is added BEFORE the body renders content.
+ */
+body.ct-entering {
+    /* content starts blurred + shifted */
+    overflow: hidden;
+    /* avoid scrollbar flash */
+}
+
+/*
+ * The reveal wrapper — wraps everything meaningful visible to user.
+ * We animate the body element itself using a staged approach.
+ */
+.ct-reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(6px);
+    will-change: opacity, transform, filter;
+}
+
+.ct-reveal.ct-reveal-active {
+    transition:
+        opacity var(--ct-dur-reveal) var(--ct-ease-out),
+        transform var(--ct-dur-reveal) var(--ct-ease-out),
+        filter var(--ct-dur-reveal) var(--ct-ease-out);
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. ACCESSIBILITY — instant when motion reduced
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --ct-dur-blur-out: 0ms;
+        --ct-dur-overlay: 0ms;
+        --ct-dur-sweep: 0ms;
+        --ct-dur-reveal: 0ms;
+    }
+
+    #ct-overlay,
+    #ct-sweep,
+    #intro-scene.ct-exit-blur,
+    .ct-reveal,
+    .ct-reveal.ct-reveal-active {
+        transition: none !important;
+        animation: none !important;
+    }
+}

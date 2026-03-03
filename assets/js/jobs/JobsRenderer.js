@@ -125,10 +125,11 @@ class JobsRenderer {
      * Show loading state
      */
     showLoading() {
+        const msg = window.i18n ? window.i18n.t('loading_opportunities') : 'Loading opportunities…';
         this.container.innerHTML = `
             <div class="jobs-loading">
                 <div class="loading-spinner"></div>
-                <p>Loading amazing opportunities...</p>
+                <p>${msg}</p>
             </div>
         `;
     }
@@ -136,14 +137,17 @@ class JobsRenderer {
     /**
      * Show error state (fallback only)
      */
-    showError(message = 'Something went wrong. Please try again.') {
+    showError(message) {
+        const errTitle = window.i18n ? window.i18n.t('oops') : 'Something went wrong';
+        const errMsg = message || (window.i18n ? window.i18n.t('error_try_again') : 'An error occurred. Please try again.');
+        const refreshLabel = window.i18n ? window.i18n.t('refresh_page') : 'Refresh Page';
         this.container.innerHTML = `
             <div class="jobs-error">
                 <i class="fas fa-exclamation-triangle"></i>
-                <h3>Oops!</h3>
-                <p>${this._escapeHtml(message)}</p>
+                <h3>${errTitle}</h3>
+                <p>${this._escapeHtml(errMsg)}</p>
                 <button class="btn btn-primary" onclick="location.reload()">
-                    Refresh Page
+                    ${refreshLabel}
                 </button>
             </div>
         `;
